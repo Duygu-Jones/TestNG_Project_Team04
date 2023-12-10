@@ -1,0 +1,26 @@
+
+
+ReusableMethods Class'inda kisisel methodlar 399.satirdan baslar:
+    NOTE:
+    Lutfen Yeni bir method ekledikten sonra satir araligini kontrol ediniz,
+    kayma var ise duzelttikten sonra push yapiniz
+
+        Bireysel ayrilan satir araliklari;
+
+            #Selma Simsek (400)
+
+            #Salih Turkmen (450)
+
+            #Duygu Jones (500)
+
+            #Muammer Ucar (550)
+
+            #Ismail Sap (600)
+
+            #Selma Aslan (650)
+
+            #Kadir Furkan Kilic (700)
+
+            #Ibrahim Akar (750)
+
+

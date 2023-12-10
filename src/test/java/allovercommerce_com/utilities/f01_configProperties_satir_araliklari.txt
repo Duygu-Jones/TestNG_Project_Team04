@@ -1,0 +1,24 @@
+
+Configuration.properties sayfasinda kisilere ayrilan satir araliklari
+
+    NOTE:
+    Lutfen Yeni bir method ekledikten sonra satir araligini kontrol ediniz,
+    kayma var ise duzelttikten sonra push yapiniz
+
+        #Selma Simsek (5)
+
+        #Salih Turkmen (50)
+
+        #Duygu Jones (100)
+
+        #Muammer Ucar (150)
+
+        #Ismail Sap (200)
+
+        #Selma Aslan (250)
+
+        #Kadir Furkan Kilic (300)
+
+        #Ibrahim Akar (350)
+
+
