@@ -22,7 +22,7 @@ public class OrnekTestClass_duygu {
         Faker faker = new Faker();
 
         //Rapor olusturmak icin ilk olarak ExtentReport methodu cagrildi ve gerekli parametreler girildi
-             //  => 4 adet Parametre var: ( 1)yourName,   2)US_NOveBaslik,    3) TC_No,    4) testTanim/Description )
+             //  => 4 adet Parametre var: ( 1)yourName,   2)US_NOveBaslik,    3) TC_NoBaslik )
 
         ReusableMethods.extentReportCreate("duygu", "US01-Siteye kayit olunabilmeli",
                                         "TC01-Siteye, kullanıcı (Müşteri) olarak kayıt yapılabilmeli (Register)");
