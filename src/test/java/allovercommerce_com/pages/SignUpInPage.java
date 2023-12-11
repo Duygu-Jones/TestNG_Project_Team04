@@ -68,9 +68,9 @@ public class SignUpInPage {
 
 
     //Salih Turkmen (70)
-
-
-
+    @FindBy(xpath = "//input[@id='username']")      public WebElement userNameBoxST;
+    @FindBy(xpath = "//input[@id='password']")      public WebElement passwordBoxST;
+    @FindBy(xpath = "//button[@value='Sign In']")   public WebElement signInButtonST;
 
 
 
