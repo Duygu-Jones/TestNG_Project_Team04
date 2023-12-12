@@ -17,7 +17,7 @@ public class TC02 {
         HomePage homePage=new HomePage();
         MyAccountPage myAccountPage=new MyAccountPage();
         Faker faker=new Faker();
-        ReusableMethods.extentReportCreate("Salih"," Kullanıcı Shipping Adress ekleyebilmeli","TC02 Kullanıcı Shipping Address kısmındaki Firstname alanını doldurmazsa shipping adress ekleyememeli");
+        ReusableMethods.extentReportCreate("Salih","US04- Kullanıcı Shipping Adress ekleyebilmeli","TC03 Kullanıcı Shipping Address kısmındaki Firstname alanını doldurmazsa shipping adress ekleyememeli");
 
 
         //1	https://allovercommerce.com Sitesine Git ve Login Ol
@@ -85,8 +85,9 @@ public class TC02 {
         // "First name is a required field." metni görülmeli.
         String expectedData ="First name is a required field.";
         ReusableMethods.verifyData(myAccountPage.verifyAddressNotChangedST,expectedData);
-        ReusableMethods.extentTestInfo("Kayıdın gerçekleşmedigi doğrulandi");
-        ReusableMethods.extentTestPass("Kullanıcı Shipping Adress ekleyemedidi");
+        ReusableMethods.extentTestInfo("'First name is a required field.' metni görüldü");
+
+        ReusableMethods.extentTestPass("Kullanıcı Shipping Adress ekleyemedi");
         ReusableMethods.extentReportFlush();
         Driver.closeDriver();
 
