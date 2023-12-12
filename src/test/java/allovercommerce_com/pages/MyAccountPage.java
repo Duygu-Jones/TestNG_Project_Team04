@@ -19,8 +19,8 @@ public class MyAccountPage {
 
 //Selma Simsek (satir baslangici: 20)
 
-
-
+    @FindBy(xpath = "//a[.='Addresses']")
+    public WebElement addressButtonSS;
 
 
 
