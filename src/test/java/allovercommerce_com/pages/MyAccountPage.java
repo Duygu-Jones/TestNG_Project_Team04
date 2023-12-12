@@ -68,7 +68,7 @@ public class MyAccountPage {
 
 
 //Salih Turkmen (70)
-@FindBy(xpath = "//a[text()='Addresses']") public WebElement addressLinkST;
+    @FindBy(xpath = "//a[text()='Addresses']") public WebElement addressLinkST;
     @FindBy(xpath = "//main[@id='main']//div[2]//div[1]//a[1]")  public WebElement shippingAddressAddLinkST;
     @FindBy(xpath = "//input[@id='shipping_first_name']") public WebElement shippingAddressFirstnameBoxST;
     @FindBy(xpath = "//input[@id='shipping_last_name']") public WebElement shippingAddressLastnameBoxST;
@@ -78,8 +78,8 @@ public class MyAccountPage {
     @FindBy(xpath = "//button[text()='Save address']") public WebElement shippingAddressSaveAddressButtonST;
     @FindBy(xpath = "//div[@role='alert']") public WebElement addressChangedSuccessfullyST;
     @FindBy(xpath = "//li[contains(@class,'alert alert-simple alert-icon alert-close-top alert-danger')]") public WebElement verifyAddressNotChangedST;
-
-
+    @FindBy(xpath = "//li[contains(@class,'alert alert-simple alert-icon alert-close-top alert-danger')]") public WebElement addressNotChangedLastNameRequiredST;
+    @FindBy(xpath = "//li[contains(@class,'alert alert-simple alert-icon alert-close-top alert-danger')]") public WebElement addressNotChangedPostCodeRequiredST;
 
 
 
