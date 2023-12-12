@@ -229,15 +229,15 @@ public class MyAccountPage {
 @FindBy(xpath = "//a[.='Support Tickets']") public WebElement supportTicketsIsmail;
 @FindBy(xpath = "//a[.='Followings']") public WebElement followingsIsmail;
 @FindBy(xpath = "//a[.='Logout']") public WebElement logOutIsmail;
-
-
-
-
-
-
-
-
-
+@FindBy(xpath = "//h2[.='Store Manager']") public WebElement storeManagerVerifyIsmail;
+@FindBy(xpath = "//h4[.='Orders']") public WebElement ordersVerifyIsmail;
+@FindBy(xpath = "//h4[.='Downloads']") public  WebElement downloadsVerifyIsmail;
+@FindBy(xpath = "//h4[.='Addresses']") public  WebElement adressesVerifyIsmail;
+@FindBy(xpath = "//h4[.='Account Details']") public WebElement accountDetailsVerifyIsmail;
+@FindBy(xpath = "//h2[.='Wishlist']") public WebElement wishlistVerifyIsmail;
+@FindBy(xpath = "//span[.='Status']") public WebElement supportTicketsVerifyIsmail;
+@FindBy(xpath = "//span[.='Store']") public WebElement followingsVerifyIsmail;
+@FindBy(xpath = "//span[.='Remember me']") public WebElement logoutVerifyIsmail;
 
 
 
