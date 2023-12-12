@@ -19,29 +19,29 @@ public class SignUpInPage {
 
     //Selma Simsek (20)
 
+    @FindBy(xpath = "(//input[@id='username'])[1]")
+    public WebElement usernameOrEmailTextBoxSS;
 
+    @FindBy(xpath = "(//input[@id='password'])[1]")
+    public WebElement passwordTextBoxSS;
 
+    @FindBy(xpath = "(//button[.='Sign In'])[1]")
+    public WebElement signInButtonSS;
 
+    @FindBy(xpath = "(//input[@id='reg_username'])[1]")
+    public WebElement signUpUsernameTextBoxSS;
 
+    @FindBy(xpath = "(//input[@id='reg_email'])[1]")
+    public WebElement signUpEmailTextBoxSS;
 
+    @FindBy(xpath = "(//input[@id='reg_password'])[1]")
+    public WebElement signUpPasswordTextBoxSS;
 
+    @FindBy(xpath = "(//input[@id='register-policy'])[1]")
+    public WebElement signUpIAgreeBoxSS;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "(//button[.='Sign Up'])[1]")
+    public WebElement signUpOnayButtonSS;
 
 
 
