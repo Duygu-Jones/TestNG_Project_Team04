@@ -218,11 +218,11 @@ public class SignUpInPage {
 
 
     //Ismail Sap (220)
-
-
-
-
-
+    @FindBy(className = "w-icon-account") public WebElement signInButtonIsmail;
+    @FindBy(id = "username") public WebElement userNameBoxIsmail;
+    @FindBy(id = "password") public WebElement passwordBoxIsmail;
+    @FindBy(name = "login") public WebElement loginButtonIsmail;
+    @FindBy(xpath = "//span[.='Sign Out']") public WebElement loginVerifyIsmail;
 
 
 

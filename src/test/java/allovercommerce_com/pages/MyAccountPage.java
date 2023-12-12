@@ -218,17 +218,17 @@ public class MyAccountPage {
 
 
 //Ismail Sap (220)
-
-
-
-
-
-
-
-
-
-
-
+@FindBy(xpath = "//a[.='My Account']") public  WebElement myAccountButtonIsmail;
+@FindBy(xpath = "//h2[@class='page-title']") public WebElement myAccountPageVerifyIsmail;
+@FindBy(xpath = "//*[.='Store Manager']") public WebElement storeManagerIsmail;
+@FindBy(xpath = "//a[.='Orders']") public WebElement ordersIsmail;
+@FindBy(xpath = "//a[.='Downloads']") public WebElement downloadsIsmail;
+@FindBy(xpath = "//a[.='Addresses']") public WebElement addressesIsmail;
+@FindBy(xpath = "//a[.='Account details']") public WebElement accountDetailsIsmail;
+@FindBy(xpath = "(//a[.='Wishlist'])[1]") public WebElement wishlistIsmail;
+@FindBy(xpath = "//a[.='Support Tickets']") public WebElement supportTicketsIsmail;
+@FindBy(xpath = "//a[.='Followings']") public WebElement followingsIsmail;
+@FindBy(xpath = "//a[.='Logout']") public WebElement logOutIsmail;
 
 
 
