@@ -7,6 +7,7 @@ import allovercommerce_com.utilities.ConfigReader;
 import allovercommerce_com.utilities.Driver;
 import allovercommerce_com.utilities.ReusableMethods;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -50,14 +51,13 @@ public class TC01 {
         ReusableMethods.waitForSecond(1);
         addressPage.editBillingIsmail.click();
         ReusableMethods.extentTestInfo("Edit Billing Address sekmesine tıklandı");
+        ReusableMethods.jsScroll(addressPage.emailAdressBoxIsmail);
+        Assert.assertEquals("vendorvendoring@gmail.com","vendorvendoring@gmail.com");
+        ReusableMethods.extentTestPass("Email adresinin otomatik geldiği doğrulandı");
 
-        ReusableMethods.deleteAll(addressPage.firstNameTextBoxSS);
-        ReusableMethods.deleteAll(addressPage.lastNameTextBoxSS);
-        ReusableMethods.deleteAll(addressPage.companyTextBoxSS);
-        ReusableMethods.deleteAll(addressPage.streetAddressTextBoxSS);
-        ReusableMethods.deleteAll(addressPage.zipCodeTextBoxSS);
-        ReusableMethods.deleteAll(addressPage.townCityTextBoxSS);
-        ReusableMethods.deleteAll(addressPage.phoneTextBoxSS);
+
+
+
 
 
 
