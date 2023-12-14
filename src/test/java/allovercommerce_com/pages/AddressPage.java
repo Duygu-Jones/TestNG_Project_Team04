@@ -218,7 +218,7 @@ public class AddressPage {
 
 
     //Ismail Sap (220)
-
+@FindBy(xpath = "//a[.='Edit Your Billing Address']") public WebElement editBillingIsmail;
 
 
 
