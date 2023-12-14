@@ -9,10 +9,10 @@ import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC01 {
+public class TC05 {
     @Test
-    public void test01() {
-        ReusableMethods.extentReportCreate("U2T1 Selma ", "US02","TC01");
+    public void test05() {
+        ReusableMethods.extentReportCreate("U2T5 Selma ", "US02","TC05");
 
         //Web sitesine gidilir	https://allovercommerce.com/
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
@@ -22,11 +22,11 @@ public class TC01 {
         homePage.registerButtonSS.click();
 
         //Username kutusuna kayitli bir veri girilir Alice
+        Faker faker = new Faker();
         SignUpInPage signUpInPage = new SignUpInPage();
-        signUpInPage.signUpUsernameTextBoxSS.sendKeys(ConfigReader.getProperty("musteriUsername"));
+        signUpInPage.signUpUsernameTextBoxSS.sendKeys(faker.name().username());
 
         //Your Email address kutusuna gecerli bir veri girilir	{email}
-        Faker faker = new Faker();
         signUpInPage.signUpEmailTextBoxSS.sendKeys(faker.internet().emailAddress());
 
         //Password kutusuna gecerli bir veri girilir	{Password}
@@ -35,16 +35,10 @@ public class TC01 {
         //I agree to the privacy policy kutusu isaretlenir
         signUpInPage.signUpIAgreeBoxSS.click();
 
-        //Sign Up butonuna tiklanir
-        signUpInPage.signUpOnayButtonSS.click();
+        //Kayit isleminin gerceklestigi dogrulanir
+        Assert.assertTrue(signUpInPage.signUpOnayButtonSS.isEnabled());
 
-        //An account is already registered with that username. Please choose another. uyari yazisinin görüntülendigi dogrulanir
-        String expectedText="An account is already registered with that username. Please choose another.";
-        String actualText = signUpInPage.alreadyRegisteredUsernameSS.getText();
-        System.out.println("actualText = " + actualText);
-        Assert.assertTrue(actualText.contains(expectedText));
-
-        ReusableMethods.extentTestPass("Kayitli Username ile kayit olunamadigi dogrulandi");
+        ReusableMethods.extentTestPass("Alanlar dolduruldugunda Sign up buttonunun tiklanabilir oldugu dogrulandi");
         ReusableMethods.extentReportFlush();
 
         Driver.closeDriver();

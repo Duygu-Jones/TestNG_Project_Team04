@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 public class TC07 {
     @Test
     public void test07() {
-        //ReusableMethods.extentReportCreate("Selma Simsek", "US03","TC07");
+        ReusableMethods.extentReportCreate("U3T7 Selma", "US03","TC07");
        // Web sitesine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
 
@@ -22,7 +22,6 @@ public class TC07 {
        // Password kutusuna kayitli bir veri girilir
        // Sign in butonuna tiklanir
         ReusableMethods.getRegister();
-
 
         // My Account Butonuna tiklanir
         HomePage homePage =new HomePage();
@@ -47,7 +46,7 @@ public class TC07 {
         ReusableMethods.jsScroll(addressPage.countryRegionDdmSS);
 
        // Country / Region menüsünden bir veri secilir
-        ReusableMethods.ddmVisibleText(addressPage.countryRegionDdmSS,"Greenland");
+        ReusableMethods.ddmIndex(addressPage.countryRegionDdmSS,5);
 
        // Street address kutusu bos birakilir
         addressPage.streetAddressTextBoxSS.sendKeys("");
@@ -57,16 +56,16 @@ public class TC07 {
 
        // State / Country kutusuna bir veri girilir
         try {
-            ReusableMethods.jsSendKeys(addressPage.stateTextBoxSS, "Alabama");
+            ReusableMethods.ddmIndex(addressPage.stateTextBoxSS, 3);
         } catch (Exception e) {
-            ReusableMethods.ddmVisibleText(addressPage.stateTextBoxSS, "Alabama");
+            ReusableMethods.jsSendKeys(addressPage.stateTextBoxSS,faker.address().state());
         }
 
        // Postcode / ZIP kutusuna bir veri girilir
         addressPage.zipCodeTextBoxSS.sendKeys(faker.address().zipCode());
 
        // Phone kutusuna bir veri girilir
-        addressPage.phoneTextBoxSS.sendKeys(faker.phoneNumber().phoneNumber().replaceAll("x",""));
+        addressPage.phoneTextBoxSS.sendKeys(faker.phoneNumber().cellPhone());
 
         addressPage.saveAddressButtonSS.click();
         ReusableMethods.waitForSecond(2);
@@ -77,11 +76,10 @@ public class TC07 {
         System.out.println("actualbosTextAlertText = " + actualbosTextAlertText);
         Assert.assertTrue(actualbosTextAlertText.contains(expectedbosTextAlertText));
 
+        ReusableMethods.extentTestPass("Street address kutusu bos biralilarak islem kaydi yapilamadigi dogrulandi");
+        ReusableMethods.extentReportFlush();
 
-        //ReusableMethods.extentTestPass("Street address kutusu bos biralilarak islem kaydi yapilamadigi dogrulandi");
-        //ReusableMethods.extentReportFlush();
-
-       // Driver.closeDriver();
+        Driver.closeDriver();
 
 
 

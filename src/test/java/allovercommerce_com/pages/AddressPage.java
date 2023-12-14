@@ -29,6 +29,8 @@ public class AddressPage {
 
     @FindBy(xpath= "//select[@id='billing_country']") public WebElement countryRegionDdmSS;
 
+    @FindBy(id= "select2-billing_country-container") public WebElement countryRegionBoxSS;
+
     @FindBy(xpath= "//input[@name='billing_address_1']") public WebElement streetAddressTextBoxSS;
 
     @FindBy(xpath = "//input[@name='billing_city']") public WebElement townCityTextBoxSS;
@@ -40,8 +42,6 @@ public class AddressPage {
     @FindBy(xpath = "//input[@name='billing_postcode']") public WebElement zipCodeTextBoxSS;
 
     @FindBy(xpath= "//input[@id='billing_phone']") public WebElement phoneTextBoxSS;
-
-    @FindBy(xpath= "//input[@name='billing_email']") public WebElement emailAddressTextSS;
 
     @FindBy(xpath= "//button[.='Save address']") public WebElement saveAddressButtonSS;
 
@@ -218,10 +218,10 @@ public class AddressPage {
 
 
     //Ismail Sap (220)
-
-
-
-
+@FindBy(xpath = "//a[.='Edit Your Billing Address']") public WebElement editBillingIsmail;
+@FindBy(xpath  ="//select[@id='billing_country']") public WebElement countryList;
+@FindBy(xpath  ="//span[@id='select2-billing_country-container']") public WebElement countryBox;
+@FindBy(xpath = "//*[@id='billing_email']") public WebElement emailAdressBoxIsmail;
 
 
 

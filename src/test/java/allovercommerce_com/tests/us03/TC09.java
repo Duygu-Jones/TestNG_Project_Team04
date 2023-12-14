@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 public class TC09 {
     @Test
     public void test09() {
-        //ReusableMethods.extentReportCreate("Selma Simsek", "US03","TC09");
+        ReusableMethods.extentReportCreate("U3T9 Selma", "US03","TC09");
        // Web sitesine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
 
@@ -46,7 +46,7 @@ public class TC09 {
         ReusableMethods.jsScroll(addressPage.countryRegionDdmSS);
 
        // Country / Region menüsünden bir veri secilir
-        ReusableMethods.ddmVisibleText(addressPage.countryRegionDdmSS,"Greenland");
+        ReusableMethods.ddmIndex(addressPage.countryRegionDdmSS,5);
 
        // Street address kutusuna bir veri girilir
         addressPage.streetAddressTextBoxSS.sendKeys(faker.address().streetAddress());
@@ -60,7 +60,7 @@ public class TC09 {
         addressPage.zipCodeTextBoxSS.sendKeys(faker.address().zipCode());
 
        // Phone kutusuna bir veri girilir
-        addressPage.phoneTextBoxSS.sendKeys(faker.phoneNumber().phoneNumber().replaceAll("x",""));
+        addressPage.phoneTextBoxSS.sendKeys(faker.phoneNumber().cellPhone());
 
         addressPage.saveAddressButtonSS.click();
         ReusableMethods.waitForSecond(2);
@@ -71,11 +71,10 @@ public class TC09 {
         System.out.println("actualbosTextAlertText = " + actualbosTextAlertText);
         Assert.assertTrue(actualbosTextAlertText.contains(expectedbosTextAlertText));
 
-
         ReusableMethods.extentTestPass("State / Country kutusu bos biralilarak islem kaydi yapilamadigi dogrulandi");
         ReusableMethods.extentReportFlush();
 
-       // Driver.closeDriver();
+        Driver.closeDriver();
 
 
 

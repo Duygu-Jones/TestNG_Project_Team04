@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 public class TC06 {
     @Test
     public void test06() {
-        ReusableMethods.extentReportCreate("06Selma Simsek", "US03","TC06");
+        ReusableMethods.extentReportCreate("U3T6 Selma", "US03","TC06");
        // Web sitesine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
 
@@ -48,6 +48,8 @@ public class TC06 {
 
        // Country / Region menüsünden bos birakilir
        ReusableMethods.ddmIndex(addressPage.countryRegionDdmSS,0);
+        JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
+        js.executeScript("arguments[0].style.border='5px solid red'",addressPage.countryRegionBoxSS);
 
 
        // Street address kutusuna bir veri girilir
@@ -69,10 +71,9 @@ public class TC06 {
        // Phone kutusuna bir veri girilir
         addressPage.phoneTextBoxSS.sendKeys(faker.phoneNumber().cellPhone());
 
-        JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
-        js.executeScript("arguments[0].style.border='5px solid red'",addressPage.countryRegionDdmSS);
+
         js.executeScript("arguments[0].style.border='5px solid red'",addressPage.stateDdmSS);
-        ReusableMethods.screenShot("State_Country", "06Selma Simsek");
+        ReusableMethods.screenShot("State_Country", "U3T6 Selma");
 
         addressPage.saveAddressButtonSS.click();
         ReusableMethods.waitForSecond(2);
