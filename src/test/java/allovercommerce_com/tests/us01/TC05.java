@@ -12,10 +12,10 @@ import org.testng.annotations.Test;
 
 import java.nio.charset.StandardCharsets;
 
-public class TC01 {
+public class TC05 {
     @Test
-    public void test01() {
-        ReusableMethods.extentReportCreate("U1T1 Selma", "US01","TC01");
+    public void test05() {
+        ReusableMethods.extentReportCreate("U1T5 Selma", "US01","TC05");
 
         // Web sitesine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
@@ -24,11 +24,10 @@ public class TC01 {
         HomePage homePage = new HomePage();
         homePage.registerButtonSS.click();
 
-        // Username kutusuna  bir veri girilir
-        // (kücük harf, büyük harf, rakam ve özel karakter iceren username)
+        // Username kutusuna  özel karakter iceren bir veri girilir
         Faker faker = new Faker();
         SignUpInPage signUpInPage = new SignUpInPage();
-        signUpInPage.signUpUsernameTextBoxSS.sendKeys (faker.name().username().getBytes(StandardCharsets.UTF_8).toString());
+        signUpInPage.signUpUsernameTextBoxSS.sendKeys (faker.name().username()+"?%&!");
         JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
         js.executeScript("arguments[0].style.border='5px solid red'",signUpInPage.signUpUsernameTextBoxSS);
 
@@ -44,7 +43,6 @@ public class TC01 {
         // Sign Up butonuna tiklanir
         signUpInPage.signUpOnayButtonSS.click();
 
-
         // Kayit isleminin gerceklestigi dogrulanir
         String expextedText = "Please enter a valid account username.";
         String actualText = signUpInPage.invalidUsernameTextSS.getText();
@@ -52,9 +50,9 @@ public class TC01 {
         Assert.assertTrue(actualText.contains(expextedText));
 
         js.executeScript("arguments[0].style.border='5px solid red'",signUpInPage.invalidUsernameTextSS);
-        ReusableMethods.screenShot("invalid Username", "U1T1 selma");
+        ReusableMethods.screenShot("invalid Username", "U1T5 selma");
 
-        ReusableMethods.extentTestFail("Kücük harf, büyük harf, rakam ve özel karakter iceren Username ile kayit gerceklesmedi. Test Fail oldu");
+        ReusableMethods.extentTestFail("özel karakter iceren Username ile kayit gerceklesmedi. Test Fail oldu");
         ReusableMethods.extentReportFlush();
 
         Driver.closeDriver();

@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 public class TC02 {
     @Test
     public void test02() {
-        ReusableMethods.extentReportCreate("02Selma Simsek", "US03","TC02");
+        ReusableMethods.extentReportCreate("U3T2 Selma", "US03","TC02");
        // Web sitesine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
 
@@ -92,7 +92,7 @@ public class TC02 {
         Assert.assertTrue(actualEmailTextData.contains(expectedEmailTextData));
         ReusableMethods.extentTestPass("Email adresinin otomatik geldigi dogrulandi");
 
-        ReusableMethods.screenShot("State_Country", "02Selma Simsek");
+        ReusableMethods.screenShot("State_Country", "U3T2 Selma");
         ReusableMethods.extentTestInfo("Manuell testte Dropdown menü olan State/Country menü, otomasyonda input olarak degerlendirildi");
         ReusableMethods.extentReportFlush();
 

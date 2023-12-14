@@ -9,10 +9,10 @@ import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC01 {
+public class TC03 {
     @Test
-    public void test01() {
-        ReusableMethods.extentReportCreate("U2T1 Selma ", "US02","TC01");
+    public void test03() {
+        ReusableMethods.extentReportCreate("U2T3 Selma ", "US02","TC03");
 
         //Web sitesine gidilir	https://allovercommerce.com/
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
@@ -22,15 +22,15 @@ public class TC01 {
         homePage.registerButtonSS.click();
 
         //Username kutusuna kayitli bir veri girilir Alice
+        Faker faker = new Faker();
         SignUpInPage signUpInPage = new SignUpInPage();
-        signUpInPage.signUpUsernameTextBoxSS.sendKeys(ConfigReader.getProperty("musteriUsername"));
+        signUpInPage.signUpUsernameTextBoxSS.sendKeys(faker.name().username());
 
         //Your Email address kutusuna gecerli bir veri girilir	{email}
-        Faker faker = new Faker();
         signUpInPage.signUpEmailTextBoxSS.sendKeys(faker.internet().emailAddress());
 
         //Password kutusuna gecerli bir veri girilir	{Password}
-        signUpInPage.signUpPasswordTextBoxSS.sendKeys(faker.internet().password());
+        signUpInPage.signUpPasswordTextBoxSS.sendKeys(ConfigReader.getProperty("musteriPassword"));
 
         //I agree to the privacy policy kutusu isaretlenir
         signUpInPage.signUpIAgreeBoxSS.click();
@@ -38,13 +38,10 @@ public class TC01 {
         //Sign Up butonuna tiklanir
         signUpInPage.signUpOnayButtonSS.click();
 
-        //An account is already registered with that username. Please choose another. uyari yazisinin görüntülendigi dogrulanir
-        String expectedText="An account is already registered with that username. Please choose another.";
-        String actualText = signUpInPage.alreadyRegisteredUsernameSS.getText();
-        System.out.println("actualText = " + actualText);
-        Assert.assertTrue(actualText.contains(expectedText));
+        //Kayit isleminin gerceklestigi dogrulanir
+        Assert.assertTrue(homePage.signUpButtonSS.isDisplayed());
 
-        ReusableMethods.extentTestPass("Kayitli Username ile kayit olunamadigi dogrulandi");
+        ReusableMethods.extentTestPass("Kayitli Password ile kayit olunabildigi dogrulandi");
         ReusableMethods.extentReportFlush();
 
         Driver.closeDriver();

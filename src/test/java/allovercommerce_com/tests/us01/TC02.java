@@ -12,10 +12,10 @@ import org.testng.annotations.Test;
 
 import java.nio.charset.StandardCharsets;
 
-public class TC01 {
+public class TC02 {
     @Test
-    public void test01() {
-        ReusableMethods.extentReportCreate("U1T1 Selma", "US01","TC01");
+    public void test02() {
+        ReusableMethods.extentReportCreate("U1T2 Selma", "US01","TC02");
 
         // Web sitesine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
@@ -24,13 +24,10 @@ public class TC01 {
         HomePage homePage = new HomePage();
         homePage.registerButtonSS.click();
 
-        // Username kutusuna  bir veri girilir
-        // (kücük harf, büyük harf, rakam ve özel karakter iceren username)
+        // Username kutusuna kücük harf iceren bir veri girilir
         Faker faker = new Faker();
         SignUpInPage signUpInPage = new SignUpInPage();
-        signUpInPage.signUpUsernameTextBoxSS.sendKeys (faker.name().username().getBytes(StandardCharsets.UTF_8).toString());
-        JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
-        js.executeScript("arguments[0].style.border='5px solid red'",signUpInPage.signUpUsernameTextBoxSS);
+        signUpInPage.signUpUsernameTextBoxSS.sendKeys (faker.name().username().toLowerCase());
 
         // Your Email address kutusuna gecerli bir veri girilir
         signUpInPage.signUpEmailTextBoxSS.sendKeys(faker.internet().emailAddress());
@@ -44,17 +41,10 @@ public class TC01 {
         // Sign Up butonuna tiklanir
         signUpInPage.signUpOnayButtonSS.click();
 
-
         // Kayit isleminin gerceklestigi dogrulanir
-        String expextedText = "Please enter a valid account username.";
-        String actualText = signUpInPage.invalidUsernameTextSS.getText();
-        System.out.println("actualText = " + actualText);
-        Assert.assertTrue(actualText.contains(expextedText));
+        Assert.assertTrue(homePage.signUpButtonSS.isDisplayed());
 
-        js.executeScript("arguments[0].style.border='5px solid red'",signUpInPage.invalidUsernameTextSS);
-        ReusableMethods.screenShot("invalid Username", "U1T1 selma");
-
-        ReusableMethods.extentTestFail("Kücük harf, büyük harf, rakam ve özel karakter iceren Username ile kayit gerceklesmedi. Test Fail oldu");
+        ReusableMethods.extentTestPass("Kücük harf iceren Username ile kayit isleminin gerceklestigi dogrulandi. ");
         ReusableMethods.extentReportFlush();
 
         Driver.closeDriver();

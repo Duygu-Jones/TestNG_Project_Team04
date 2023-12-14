@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 public class TC04 {
     @Test
     public void test04() {
-        ReusableMethods.extentReportCreate("04Selma Simsek", "US03","TC04");
+        ReusableMethods.extentReportCreate("U3T4 Selma", "US03","TC04");
        // Web sitesine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
 

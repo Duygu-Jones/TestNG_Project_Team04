@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 public class TC16 {
     @Test
     public void test16() {
-        //ReusableMethods.extentReportCreate("Selma Simsek", "US03","TC16");
+        ReusableMethods.extentReportCreate("U3T16 Selma", "US03","TC16");
        // Web sitesine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
 
@@ -34,6 +34,7 @@ public class TC16 {
 
         //Street address kutusuna farkli bir veri girilir
         Faker faker = new Faker();
+        addressPage.streetAddressTextBoxSS.clear();
         addressPage.streetAddressTextBoxSS.sendKeys(faker.address().streetAddress());
 
         //SAVE ADDRESS butonuna tiklanir
@@ -46,12 +47,10 @@ public class TC16 {
         System.out.println("addressAddAlertText = " + actualAddressAddAlertText);
         Assert.assertTrue(actualAddressAddAlertText.contains(expectedAlertText));
 
-
-
-        ReusableMethods.extentTestPass("Address changed successfully. yazisinin görüntülendigi dogrulan");
+        ReusableMethods.extentTestPass("Street address bilgisinin güncellendigi dogrulandi");
         ReusableMethods.extentReportFlush();
 
-       // Driver.closeDriver();
+        Driver.closeDriver();
 
 
 
