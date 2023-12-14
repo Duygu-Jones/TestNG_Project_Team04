@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 public class TC18 {
     @Test
     public void test18() {
-        //ReusableMethods.extentReportCreate("Selma Simsek", "US03","TC18");
+        ReusableMethods.extentReportCreate("U3T18 Selma", "US03","TC18");
        // Web sitesine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
 
@@ -28,7 +28,6 @@ public class TC18 {
 
         MyAccountPage myAccountPage = new MyAccountPage();
         myAccountPage.addressButtonSS.click();
-
 
         //Billing Address menüsü altindaki EDIT YOUR BILLING ADDRES butonuna tiklanir
         AddressPage addressPage = new AddressPage();
@@ -49,16 +48,10 @@ public class TC18 {
         System.out.println("addressAddAlertText = " + actualAddressAddAlertText);
         Assert.assertTrue(actualAddressAddAlertText.contains(expectedAlertText));
 
-
-
-        ReusableMethods.extentTestPass("Address changed successfully. yazisinin görüntülendigi dogrulan");
+        ReusableMethods.extentTestPass("Postcode / ZIP bilgisinin güncellendigi dogrulandi");
         ReusableMethods.extentReportFlush();
 
-       // Driver.closeDriver();
-
-
-
-
+        Driver.closeDriver();
 
     }
 }

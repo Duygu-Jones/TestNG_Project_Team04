@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 public class TC12 {
     @Test
     public void test12() {
-        //ReusableMethods.extentReportCreate("Selma Simsek", "US03","TC12");
+        ReusableMethods.extentReportCreate("U3T12 Selma", "US03","TC12");
        // Web sitesine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
 
@@ -25,6 +25,7 @@ public class TC12 {
         HomePage homePage = new HomePage();
         homePage.myAccountButtonSS.click();
 
+        // Adress butonuna tiklanir
         MyAccountPage myAccountPage = new MyAccountPage();
         myAccountPage.addressButtonSS.click();
 
@@ -38,11 +39,10 @@ public class TC12 {
         System.out.println("actualUrl = " + actualUrl);
         Assert.assertTrue(actualUrl.contains(expectedUrl));
 
-
         ReusableMethods.extentTestPass("Billing Address güncelleme sayfasinin acildigi dogrulandi");
         ReusableMethods.extentReportFlush();
 
-       // Driver.closeDriver();
+        Driver.closeDriver();
 
 
 

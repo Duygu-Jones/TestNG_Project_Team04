@@ -17,7 +17,7 @@ import java.beans.JavaBean;
 public class TC03 {
     @Test
     public void test03() {
-        ReusableMethods.extentReportCreate("03Selma Simsek", "US03","TC03");
+        ReusableMethods.extentReportCreate("U3T3 Selma", "US03","TC03");
        // Web sitesine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
 

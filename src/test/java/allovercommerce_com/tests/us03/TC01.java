@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 public class TC01 {
     @Test
     public void test01() {
-        ReusableMethods.extentReportCreate("01Selma Simsek","US03","TC01");
+        ReusableMethods.extentReportCreate("U3T1 Selma","US03","TC01");
         //Web sitesine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
 
@@ -27,7 +27,7 @@ public class TC01 {
         HomePage homePage = new HomePage();
         JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
         js.executeScript("arguments[0].style.border = '5px solid red'",homePage.myAccountButtonSS);
-        ReusableMethods.screenShot("My Account", "01Selma Simsek");
+        ReusableMethods.screenShot("My Account", "U3T1 Selma");
         homePage.myAccountButtonSS.click();
 
         //Address butonuna tiklanir

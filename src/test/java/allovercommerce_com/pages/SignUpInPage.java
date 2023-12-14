@@ -43,14 +43,14 @@ public class SignUpInPage {
     @FindBy(xpath = "(//button[.='Sign Up'])[1]")
     public WebElement signUpOnayButtonSS;
 
+    @FindBy(xpath = "//p[.='An account is already registered with that username. Please choose another.']")
+    public WebElement alreadyRegisteredUsernameSS;
 
+    @FindBy(xpath = "//p[.='An account is already registered with your email address. Please log in.']")
+    public WebElement alreadyRegisteredEmailSS;
 
-
-
-
-
-
-
+    @FindBy(xpath = "//p[.='Please enter a valid account username.']")
+    public WebElement invalidUsernameTextSS;
 
 
 
