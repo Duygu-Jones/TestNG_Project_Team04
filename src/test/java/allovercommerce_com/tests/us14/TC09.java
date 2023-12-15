@@ -1,6 +1,5 @@
 package allovercommerce_com.tests.us14;
 
-import allovercommerce_com.pages.MyAccountPage;
 import allovercommerce_com.pages.ProductPage;
 import allovercommerce_com.pages.StoreManagerPage;
 import allovercommerce_com.utilities.ConfigReader;
@@ -11,17 +10,18 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class TC08 {
+public class TC09 {
 
     SoftAssert softAssert = new SoftAssert();
     Actions actions = new Actions(Driver.getDriver());
     @Test
     public void test01() {
-        ProductPage alloverPage = new ProductPage();
         StoreManagerPage storeManagerPage = new StoreManagerPage();
+        ProductPage alloverPage = new ProductPage();
         ReusableMethods.extentReportCreate("Fatma",
-                "New Categories eklenebilmeli",
-                "New Categories eklendiğini doğrula.");
+                "Product brands erişilebiir olmalı.",
+                "Product brandsın erişilebilir olduğunu doğrula.");
+
 
         //https://allovercommerce.com Sitesine Git.
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
@@ -53,11 +53,11 @@ public class TC08 {
         ReusableMethods.extentTestInfo("Sign Out'a tıklandı.");
 
         //Store Manager'a tıkla.
-       storeManagerPage.storeManager.click();
+        storeManagerPage.storeManager.click();
         ReusableMethods.extentTestInfo("Store Manager'a tıklandı.");
 
         //Product seçeneğine tıkla.
-       storeManagerPage.product.click();
+        storeManagerPage.product.click();
         ReusableMethods.extentTestInfo("Product Seçeneğine tıklandı.");
 
         //Add New'e tıkla.
@@ -66,21 +66,13 @@ public class TC08 {
         ReusableMethods.waitForSecond(3);
         ReusableMethods.extentTestInfo("Add New'e tıklandı.");
 
+        //Product Brands alanından bir veri seç.
+        storeManagerPage.canta.click();
+        ReusableMethods.extentTestInfo("Product Brands alanından bir veri seçildi..");
 
-        //Add New Category tıklandı.
-        storeManagerPage.addNewCategory.click();
-        ReusableMethods.extentTestInfo("Add New Category'e tıklandı.");
-
-
-        //Category Name kutusuna bir veri gir.
-        storeManagerPage.categoryName.sendKeys("Canta",Keys.TAB,Keys.ENTER);
-        ReusableMethods.extentTestInfo("Category Name kutusuna bir veri girildi.");
-
-
-        //Veri eklenebilidiğini doğrula.
+        //Product Brands alanından bir veri seçilebilidği doğrula.
         softAssert.assertTrue(storeManagerPage.canta.isDisplayed());
-        ReusableMethods.waitForSecond(3);
-        ReusableMethods.extentTestInfo("Veri eklenebilidiği doğrulandı.");
+        ReusableMethods.extentTestInfo("Product Brands alanından bir veri seçilebilidği doğrulanır.");
 
         ReusableMethods.extentReportFlush();
         Driver.closeDriver();
