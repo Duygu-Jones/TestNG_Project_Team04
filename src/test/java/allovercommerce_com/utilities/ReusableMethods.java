@@ -1,8 +1,13 @@
 package allovercommerce_com.utilities;
 
+import allovercommerce_com.pages.AddressPage;
+import allovercommerce_com.pages.HomePage;
+import allovercommerce_com.pages.MyAccountPage;
+import allovercommerce_com.pages.SignUpInPage;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -391,60 +396,55 @@ public class ReusableMethods {
 
 
 
-
-
-
-
-
     //---------------------------------------Kisisel Methodlar : 399 ----------------------------------------------------------------
     //Selma Simsek (400)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // kayitli email ile sign in olma:
+    public static void getSignInSS(){
+        Driver.getDriver().get(ConfigReader.getProperty("URL"));
+        HomePage homePage = new HomePage();
+        homePage.signInButtonSS.click();
+        ReusableMethods.waitForSecond(2);
+        SignUpInPage signUpInPage = new SignUpInPage();
+        signUpInPage.usernameOrEmailTextBoxSS.sendKeys(ConfigReader.getProperty("musteriEmail"));
+        signUpInPage.passwordTextBoxSS.sendKeys(ConfigReader.getProperty("musteriPassword"));
+        signUpInPage.signInButtonSS.click();}
+    public static void getRegister(){
+        Faker faker = new Faker();
+        HomePage homePage = new HomePage();
+        SignUpInPage signUpInPage = new SignUpInPage();
+        homePage.registerButtonSS.click();
+        signUpInPage.signUpUsernameTextBoxSS.sendKeys(faker.name().username());
+        signUpInPage.signUpEmailTextBoxSS.sendKeys(faker.internet().emailAddress());
+        signUpInPage.signUpPasswordTextBoxSS.sendKeys(faker.internet().password());
+        signUpInPage.signUpIAgreeBoxSS.click();
+        signUpInPage.signUpOnayButtonSS.click();}
+    //JS GetAttributeValue
+    public static String jsGetValueBySS(String id, String attributeName) {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        String attribute_Value = (String) js.executeScript("return document.getElementById('" + id + "')." + attributeName);
+       return attribute_Value;}
+    public static void adresKayitIslemi() {
+        HomePage homePage = new HomePage();
+        homePage.myAccountButtonSS.click();
+        MyAccountPage myAccountPage = new MyAccountPage();
+        myAccountPage.addressButtonSS.click();
+        ReusableMethods.waitForSecond(2);
+        AddressPage addressPage = new AddressPage();
+        ReusableMethods.jsScroll(addressPage.addButtonSS);
+        addressPage.addButtonSS.click();
+        Faker faker = new Faker();
+        addressPage.firstNameTextBoxSS.sendKeys(faker.name().firstName());
+        addressPage.lastNameTextBoxSS.sendKeys(faker.name().lastName());
+        ReusableMethods.jsScroll(addressPage.countryRegionDdmSS);
+        ReusableMethods.ddmIndex(addressPage.countryRegionDdmSS, 5);
+        addressPage.streetAddressTextBoxSS.sendKeys(faker.address().streetAddress());
+        addressPage.townCityTextBoxSS.sendKeys(faker.address().city());
+        try {ReusableMethods.jsSendKeys(addressPage.stateTextBoxSS, "Alabama");
+        } catch (Exception e) {ReusableMethods.ddmVisibleText(addressPage.stateTextBoxSS, "Alabama");}
+        addressPage.zipCodeTextBoxSS.sendKeys(faker.address().zipCode());
+        addressPage.phoneTextBoxSS.sendKeys(faker.phoneNumber().cellPhone());
+        addressPage.saveAddressButtonSS.click();
+        ReusableMethods.waitForSecond(2);}
 
 
     //Salih Bey: 450
