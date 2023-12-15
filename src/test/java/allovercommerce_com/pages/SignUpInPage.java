@@ -373,6 +373,11 @@ public class SignUpInPage {
 
 
 
+@FindBy(xpath = "//span[.='Sign In']")
+    public WebElement signInIbrahim;
+
+@FindBy(id = "username")
+public WebElement userNameTextBoxIbrahim;
 
 
 

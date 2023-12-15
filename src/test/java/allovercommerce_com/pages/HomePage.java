@@ -374,6 +374,9 @@ public class HomePage {
 
 
 
+    @FindBy(className = "form-control")
+    public WebElement searchBoxIbrahim;
+
 
 
 

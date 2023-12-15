@@ -2,6 +2,8 @@ package allovercommerce_com.pages;
 
 
 import allovercommerce_com.utilities.Driver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
@@ -374,8 +376,17 @@ public class ProductPage {
 
 
 
+@FindBy(xpath = "//*[@name='add-to-cart']")
+    public WebElement addToCartIbrahim;
 
+@FindBy(xpath = "//i[@class='w-icon-cart']")
+    public WebElement cartSymolIbrahim;
 
+@FindBy(xpath = "//a[@class ='button checkout wc-forward']")
+    public WebElement checkOutButtonIbrahim;
+
+@FindBy(xpath = "//tr//td[@class='product-name']")
+    public WebElement productListIbrahim;
 
 
 
