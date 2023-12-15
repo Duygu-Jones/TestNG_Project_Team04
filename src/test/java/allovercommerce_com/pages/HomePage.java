@@ -19,17 +19,17 @@ public class HomePage {
 
     //Selma Simsek (20)
 
+    @FindBy(xpath = "//a[@class='register inline-type']")
+    public WebElement registerButtonSS;
 
+    @FindBy(xpath = "//span[.='Sign In']")
+    public WebElement signInButtonSS;
 
+    @FindBy(xpath = "//span[.='Sign Out']")
+    public WebElement myAccountButtonSS;
 
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "//span[.='Sign Out']")
+    public WebElement signUpButtonSS;
 
 
 
@@ -68,19 +68,19 @@ public class HomePage {
 
 
     //Salih Turkmen (70)
+    @FindBy(xpath = "//span[text()='Sign In']") public WebElement signInButtonST;
+    SignUpInPage signUpInPage=new SignUpInPage();
+    @FindBy(xpath = "//li[@id='menu-item-1079']//a[contains(text(),'My Account')]") public WebElement myAccountLinkST;
 
-
-
-
-
-
-
-
-
-
-
-
-
+    public void performLoginSalih() {
+        Driver.getDriver().get(ConfigReader.getProperty("URL"));
+        Driver.getDriver().get(ConfigReader.getProperty("URL"));
+        signInButtonST.click();
+        signUpInPage.userNameBoxST.sendKeys("Alice");
+        signUpInPage.passwordBoxST.sendKeys("Alice123456*");
+        signUpInPage.signInButtonST.click();
+    }
+    @FindBy(css = "input[aria-label='Search']")         public WebElement searchBoxST;
 
 
 
