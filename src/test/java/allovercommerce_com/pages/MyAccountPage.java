@@ -320,8 +320,8 @@ public class MyAccountPage {
 //Kadir Furkan Kilic (320)
 
 
-
-
+    @FindBy(xpath = "//*[@href='https://allovercommerce.com/store-manager/']")
+    public WebElement storeManagerFk;
 
 
 

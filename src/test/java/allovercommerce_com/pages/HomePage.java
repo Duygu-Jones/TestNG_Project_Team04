@@ -5,6 +5,7 @@ package allovercommerce_com.pages;
 import allovercommerce_com.utilities.ConfigReader;
 import allovercommerce_com.utilities.Driver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -15,7 +16,6 @@ public class HomePage {
     public HomePage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
-
 
     //Selma Simsek (20)
 
@@ -319,16 +319,16 @@ public class HomePage {
 
     //Kadir Furkan Kilic (320)
 
+    public static void vendorLogginFk(){
+        Driver.getDriver().get(ConfigReader.getProperty("URL"));
+        SignUpInPage.SignInFk.click();
+        SignUpInPage.emailFk.sendKeys(ConfigReader.getProperty("emailFk"));
+        SignUpInPage.passwordFk.sendKeys(ConfigReader.getProperty("allowerPassFk"));
+        SignUpInPage.submitFk.click();
 
-
-
-
-
-
-
-
-
-
+    }
+    @FindBy(xpath = "(//*[@href='https://allovercommerce.com/my-account-2/'])[1]")
+    public WebElement myAccountFk;
 
 
 
