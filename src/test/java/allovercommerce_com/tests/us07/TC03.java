@@ -21,8 +21,8 @@ public class TC03 {
 
 
         ReusableMethods.extentReportCreate("duygu",
-                "US_07 -Kullanıcı seçtiği ürünleri karşılaştırabilmeli (Compare)",
-                "TC_03 -Karsilastirmak icin sectigi urunleri silebilmeli ve yeni urunler ekleyebilmeli (Compare)");
+                "US_07 || Kullanıcı seçtiği ürünleri karşılaştırabilmeli (Compare)",
+                "TC_03 || Karsilastirmak icin sectigi urunleri silebilmeli ve yeni urunler ekleyebilmeli (Compare)");
 
         //1- https://allovercommerce.com/  adresine gider.
         Driver.getDriver().get(ConfigReader.getProperty("URL"));

@@ -20,8 +20,8 @@ public class TC05 {
 
 
         ReusableMethods.extentReportCreate("duygu",
-                "US_07 -Kullanıcı seçtiği ürünleri karşılaştırabilmeli (Compare)",
-                "TC_05 -karşılaştırmak icin 4 adetten Fazla urun secimi Yapilamamali (Can Not Compare)");
+                "US_07 || Kullanıcı seçtiği ürünleri karşılaştırabilmeli (Compare)",
+                "TC_05 || karşılaştırmak icin 4 adetten Fazla urun secimi Yapilamamali (Can Not Compare)");
 
         //1- https://allovercommerce.com/  adresine gider.
         Driver.getDriver().get(ConfigReader.getProperty("URL"));

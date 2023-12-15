@@ -25,8 +25,8 @@ public class TC02 {
 
 
         ReusableMethods.extentReportCreate("duygu",
-                "US_08 -Kullanıcı seçtiği ürünleri istek listesine ekleyebilmeli (WhishList)",
-                "TC_02 -Kullanıcı istek listesine ekledigi urunleri satin alabilmeli (WhishList)");
+                "US_08 || Kullanıcı seçtiği ürünleri istek listesine ekleyebilmeli (WhishList)",
+                "TC_02 || Kullanıcı istek listesine ekledigi urunleri satin alabilmeli (WhishList)");
 
         //1- https://allovercommerce.com/  adresine gider.
         Driver.getDriver().get(ConfigReader.getProperty("URL"));

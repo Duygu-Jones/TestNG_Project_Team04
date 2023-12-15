@@ -29,9 +29,9 @@ public class TC01 {
         ProductPage productPage=new ProductPage();
 
 
-        ReusableMethods.extentReportCreate("US_07_duygu",
-                                            "US_07 -Kullanıcı seçtiği ürünleri karşılaştırabilmeli (Compare)",
-                                            "TC_01 -Kullanıcı seçtiği ürünleri karsilastirma Pop-up penceresinde goruntuleyebilmeli");
+        ReusableMethods.extentReportCreate("duygu",
+                                            "US_07 || Kullanıcı seçtiği ürünleri karşılaştırabilmeli (Compare)",
+                                            "TC_01 || Kullanıcı seçtiği ürünleri karsilastirma Pop-up penceresinde goruntuleyebilmeli");
 
         //1- https://allovercommerce.com/  adresine gider.
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
