@@ -1,8 +1,13 @@
 package allovercommerce_com.utilities;
 
+import allovercommerce_com.pages.AddressPage;
+import allovercommerce_com.pages.HomePage;
+import allovercommerce_com.pages.MyAccountPage;
+import allovercommerce_com.pages.SignUpInPage;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,8 +26,6 @@ import java.util.List;
 
 public class ReusableMethods {
 
-
-
 //--------------------------------------wait: HARD WAIT METHOD----------------------------------------------------------
     public static void waitForSecond(int second) {
         try {
@@ -31,7 +34,6 @@ public class ReusableMethods {
             throw new RuntimeException(e);
         }
     }
-
 
 //---------------------------------------waits: WAIT EXPLICIT METHODS----------------------------------------------------
 
@@ -56,16 +58,12 @@ public class ReusableMethods {
 
     }
 
-
     //Wait For Alert
     public static void waitForAlert(int second) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(second));
         wait.until(ExpectedConditions.alertIsPresent());
 
     }
-
-
-
 //-------------------------------------------ALERT HANDLES--------------------------------------------------------------
 
     //Alert ACCEPT
@@ -88,7 +86,6 @@ public class ReusableMethods {
         Driver.getDriver().switchTo().alert().sendKeys(text);
     }
 
-
 //-----------------------------------ddm-SELECT-------------------------------------------------------------------------
 
     //DropDown VisibleText ile secer
@@ -109,7 +106,6 @@ public class ReusableMethods {
         select.selectByValue(optionsValue);
     }
 
-
 //------------------------------CheckBox-------------------------------------------------------------------------------
     public static void checkTheBox(WebElement checkbox){
         if (!checkbox.isSelected()){
@@ -117,14 +113,12 @@ public class ReusableMethods {
         }
     }
 
-
 //-----------------------------ACTIONS----------------------------------------------------------------------------------
 
     //ACTIONS SCROLL_DOWN : sayfayi 1 kez asagi kaydirir
     public static void actionScrollDown(){
         new Actions(Driver.getDriver()).sendKeys(Keys.PAGE_DOWN).build().perform();
     }
-
 
     //ACTIONS SCROLL_END : Sayfanin en sonuna gider
     public static void actionScrollEnd(){
@@ -137,11 +131,14 @@ public class ReusableMethods {
     }
 
     //ACTIONS SCROLL_HOME :  sayfanin en basina gider
-    public static void actionScrollHome(){
-        new Actions(Driver.getDriver()).sendKeys(Keys.HOME).build().perform();
+    public static void actionScrollHome(){ new Actions(Driver.getDriver()).sendKeys(Keys.HOME).build().perform();
     }
 
-
+    //comeOnTheElement : element uzerine gider
+    public static void actionComeOnTheElement(WebElement element){
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(element).build().perform();
+    }
 
 //-------------------------------SwitchTo:  Window  / iframe ----------------------------------------------------------
 
@@ -174,9 +171,6 @@ public class ReusableMethods {
         Driver.getDriver().switchTo().defaultContent();
     }
 
-
-
-
 //----------------------------------------- Screen Shots Methods --------------------------------------------------------
 
     //Tüm Sayfa ScreenShot
@@ -185,9 +179,6 @@ public class ReusableMethods {
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
         String filePath = System.getProperty("user.dir") + "/src/test/java/allovercommerce_com/testoutputs/screenShots/"
                                                                             +yourName + "_"+ imgName+ "_"+  date + ".png";
-
-
-
         try {
             Files.write(Paths.get(filePath),ts.getScreenshotAs(OutputType.BYTES));
         } catch (IOException e) {
@@ -208,8 +199,6 @@ public class ReusableMethods {
             throw new RuntimeException(e);
         }
     }
-
-
 //--------------------------------------------WebTable-------------------------------------------------------------------
 
     //WebTable
@@ -266,16 +255,11 @@ public class ReusableMethods {
         String attribute_Value = (String) js.executeScript("return document.getElementById('" + id + "')." + attributeName);
         System.out.println("Attribute Value: = " + attribute_Value);
     }
-
-
-
-
 //----------------------------- Extent Reports --------------------------------------------------------------------------
 
     protected static ExtentReports extentReports;                //--> Raporlamayi baslatir
     protected static ExtentHtmlReporter extentHtmlReporter;      //--> html formatinda raporlari olusturur
     protected static ExtentTest extentTest;                      //--> Test adimlarina bilgi ekler, buna yonelik methodlari icerir
-
 
     public static void extentReportCreate(String yourName, String us_NoBaslik, String tc_NoBaslik){
 
@@ -309,11 +293,8 @@ public class ReusableMethods {
             extentReports.setSystemInfo("QA", yourName);
             extentReports.setSystemInfo("Website: ", "Allovercommerce.com");
             extentReports.setSystemInfo("User_Story", us_NoBaslik);
-            extentReports.setSystemInfo("Test_Case", tc_NoBaslik);
-
         }
     }
-
 
     //test steps'leri bu method ile girilir
     public static void extentTestInfo(String testStepsMessage) {
@@ -321,7 +302,6 @@ public class ReusableMethods {
             extentTest.info(testStepsMessage);
         }
     }
-
 
     //Test gecer ise; Test Passed rapor mesaji verir
     public static void extentTestPass(String expectedMessage) {
@@ -337,7 +317,6 @@ public class ReusableMethods {
         }
     }
 
-
     // ExtentReports objesinin flush() metodunu çağırarak rapor dosyasını oluşturur ve kaydeder:
     //      !!! test sonunda mutlaka eklenmelidir
     public static void extentReportFlush() {
@@ -349,7 +328,28 @@ public class ReusableMethods {
 
 
 
-//---------------------------------------Kisisel Methodlar----------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -398,53 +398,53 @@ public class ReusableMethods {
 
     //---------------------------------------Kisisel Methodlar : 399 ----------------------------------------------------------------
     //Selma Simsek (400)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // kayitli email ile sign in olma:
+    public static void getSignInSS(){
+        Driver.getDriver().get(ConfigReader.getProperty("URL"));
+        HomePage homePage = new HomePage();
+        homePage.signInButtonSS.click();
+        ReusableMethods.waitForSecond(2);
+        SignUpInPage signUpInPage = new SignUpInPage();
+        signUpInPage.usernameOrEmailTextBoxSS.sendKeys(ConfigReader.getProperty("musteriEmail"));
+        signUpInPage.passwordTextBoxSS.sendKeys(ConfigReader.getProperty("musteriPassword"));
+        signUpInPage.signInButtonSS.click();}
+    public static void getRegister(){
+        Faker faker = new Faker();
+        HomePage homePage = new HomePage();
+        SignUpInPage signUpInPage = new SignUpInPage();
+        homePage.registerButtonSS.click();
+        signUpInPage.signUpUsernameTextBoxSS.sendKeys(faker.name().username());
+        signUpInPage.signUpEmailTextBoxSS.sendKeys(faker.internet().emailAddress());
+        signUpInPage.signUpPasswordTextBoxSS.sendKeys(faker.internet().password());
+        signUpInPage.signUpIAgreeBoxSS.click();
+        signUpInPage.signUpOnayButtonSS.click();}
+    //JS GetAttributeValue
+    public static String jsGetValueBySS(String id, String attributeName) {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        String attribute_Value = (String) js.executeScript("return document.getElementById('" + id + "')." + attributeName);
+       return attribute_Value;}
+    public static void adresKayitIslemi() {
+        HomePage homePage = new HomePage();
+        homePage.myAccountButtonSS.click();
+        MyAccountPage myAccountPage = new MyAccountPage();
+        myAccountPage.addressButtonSS.click();
+        ReusableMethods.waitForSecond(2);
+        AddressPage addressPage = new AddressPage();
+        ReusableMethods.jsScroll(addressPage.addButtonSS);
+        addressPage.addButtonSS.click();
+        Faker faker = new Faker();
+        addressPage.firstNameTextBoxSS.sendKeys(faker.name().firstName());
+        addressPage.lastNameTextBoxSS.sendKeys(faker.name().lastName());
+        ReusableMethods.jsScroll(addressPage.countryRegionDdmSS);
+        ReusableMethods.ddmIndex(addressPage.countryRegionDdmSS, 5);
+        addressPage.streetAddressTextBoxSS.sendKeys(faker.address().streetAddress());
+        addressPage.townCityTextBoxSS.sendKeys(faker.address().city());
+        try {ReusableMethods.jsSendKeys(addressPage.stateTextBoxSS, "Alabama");
+        } catch (Exception e) {ReusableMethods.ddmVisibleText(addressPage.stateTextBoxSS, "Alabama");}
+        addressPage.zipCodeTextBoxSS.sendKeys(faker.address().zipCode());
+        addressPage.phoneTextBoxSS.sendKeys(faker.phoneNumber().cellPhone());
+        addressPage.saveAddressButtonSS.click();
+        ReusableMethods.waitForSecond(2);}
 
 
     //Salih Bey: 450

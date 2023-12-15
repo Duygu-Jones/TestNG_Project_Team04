@@ -17,7 +17,7 @@ public class TC01 {
         HomePage homePage=new HomePage();
         MyAccountPage myAccountPage=new MyAccountPage();
         Faker faker=new Faker();
-        ReusableMethods.extentReportCreate("Salih","Kullanıcı Shipping Adress ekleyebilmeli","TC01 Kullanıcı Shipping Adress ekleyebilmeli");
+        ReusableMethods.extentReportCreate("Salih","US04-Kullanıcı Shipping Adress ekleyebilmeli","TC01 Kullanıcı Shipping Adress ekleyebilmeli");
 
 
         //1	https://allovercommerce.com Sitesine Git ve Login Ol
@@ -87,6 +87,7 @@ public class TC01 {
         String expectedData ="Address changed successfully.";
         ReusableMethods.verifyData(myAccountPage.addressChangedSuccessfullyST,expectedData);
         ReusableMethods.extentTestInfo("Kayıdın gerçekleştiği doğrulandi");
+
         ReusableMethods.extentTestPass("Kullanıcı Shipping Adress ekleyebildi");
         ReusableMethods.extentReportFlush();
         Driver.closeDriver();

@@ -19,17 +19,17 @@ public class HomePage {
 
     //Selma Simsek (20)
 
+    @FindBy(xpath = "//a[@class='register inline-type']")
+    public WebElement registerButtonSS;
 
+    @FindBy(xpath = "//span[.='Sign In']")
+    public WebElement signInButtonSS;
 
+    @FindBy(xpath = "//span[.='Sign Out']")
+    public WebElement myAccountButtonSS;
 
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "//span[.='Sign Out']")
+    public WebElement signUpButtonSS;
 
 
 
