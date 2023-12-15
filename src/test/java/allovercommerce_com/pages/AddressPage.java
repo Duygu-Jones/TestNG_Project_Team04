@@ -219,12 +219,12 @@ public class AddressPage {
 
     //Ismail Sap (220)
 @FindBy(xpath = "//a[.='Edit Your Billing Address']") public WebElement editBillingIsmail;
-@FindBy(xpath  ="//select[@id='billing_country']") public WebElement countryList;
-@FindBy(xpath  ="//span[@id='select2-billing_country-container']") public WebElement countryBox;
+@FindBy(xpath  ="//select[@id='billing_country']") public WebElement countryListIsmail;
+@FindBy(xpath  ="//span[@id='select2-billing_country-container']") public WebElement countryBoxIsmail;
 @FindBy(xpath = "//*[@id='billing_email']") public WebElement emailAdressBoxIsmail;
-
-
-
+@FindBy(xpath  ="//span[@id='select2-billing_state-container']") public WebElement provinceBoxIsmail;
+@FindBy(xpath = "//input[@class='select2-search__field']") public WebElement provinceIsmail;
+@FindBy(xpath = "//i[@class='fas fa-check']") public WebElement adressSuccessIsmail;
 
 
 
