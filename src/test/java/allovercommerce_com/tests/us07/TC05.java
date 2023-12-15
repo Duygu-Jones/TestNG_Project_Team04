@@ -6,15 +6,13 @@ import allovercommerce_com.pages.ProductPage;
 import allovercommerce_com.utilities.ConfigReader;
 import allovercommerce_com.utilities.Driver;
 import allovercommerce_com.utilities.ReusableMethods;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC02 {
-
+public class TC05 {
 
     @Test
-    public void test01() {  //Positive Scenario-------------------------------------------------------------------------
+    public void test01() {  //Negative Scenario-------------------------------------------------------------------------
 
         HomePage homePage = new HomePage();
         ComparePage comparePage = new ComparePage();
@@ -23,7 +21,7 @@ public class TC02 {
 
         ReusableMethods.extentReportCreate("duygu",
                 "US_07 -Kullanıcı seçtiği ürünleri karşılaştırabilmeli (Compare)",
-                "TC_02 -Karşılaştırmak icin sectigi urunleri Pop-Up penceresinden silebilmeli");
+                "TC_05 -karşılaştırmak icin 4 adetten Fazla urun secimi Yapilamamali (Can Not Compare)");
 
         //1- https://allovercommerce.com/  adresine gider.
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
@@ -68,17 +66,16 @@ public class TC02 {
         ReusableMethods.extentTestInfo("Karsilastirmak icin 4. ürün secildi");
         ReusableMethods.waitForSecond(2);
 
-        ReusableMethods.screenShot("ComparePopUpSlideBar","duygu");
-
-        //Karsilastirma POP-UP penceresinde 4 adet secili urunden en sagdaki urunu silmek icin pencere alt bar cubugunu saga kaydır
-        Actions actions=new Actions(Driver.getDriver());
-        actions.clickAndHold(comparePage.comparePopUpSlideBarDuygu).moveByOffset(-5,0).release().perform();
+        //7- Besinci Ürün Üzerine Gel ve Compare  Simgesine Tıkla
+        Driver.getDriver().navigate().refresh();
+        ReusableMethods.actionScrollDown();
+        ReusableMethods.waitForSecond(2);
+        ReusableMethods.actionComeOnTheElement(productPage.addToCompareListDuygu.get(6));
+        productPage.addToCompareListDuygu.get(6).click();
+        ReusableMethods.extentTestInfo("Karsilastirmak icin 5. ürün secildi");
         ReusableMethods.waitForSecond(2);
 
-        //Karsilastirma POP-UP penceresinde 4.urunu sil
-        comparePage.removeFromComparePopUpDuygu.get(3).click();
-
-        //11- Compare POP-UP penceresinde Start Compare butonuna tikla
+        //8- Compare POP-UP penceresinde Start Compare butonuna tikla
         comparePage.startCompareAllDuygu.click();
         ReusableMethods.extentTestInfo("Compare POP-UP penceresinde Start Compare butonuna tiklandi");
         //Compare/karsilastirma ANA-SAYFAsinin acildigini dogrula
@@ -86,20 +83,24 @@ public class TC02 {
         ReusableMethods.extentTestPass("Compare ANA-SAYFAsinin acildigi dogrulandi");
         ReusableMethods.waitForSecond(2);
 
-        //12-Karşılaştırmak İçin Seçilen Ürünlerin Listelendiğini Doğrula
-        int expectedResult=3;                                   // Kıyaslama için 3 adet ürün kaldi
-        int actualResult=comparePage.compareListDuygu.size();
-        Assert.assertNotEquals(actualResult,expectedResult);
-        ReusableMethods.extentTestInfo("Karsilastirma SAYFAsinda secilen urunlerin listelendigi dogrulandi");
-        ReusableMethods.extentTestPass("Secilen urunlerin karsilastirilabildigi dogrulandi");
 
         ReusableMethods.actionScrollDown();
         ReusableMethods.waitForSecond(2);
 
+        ReusableMethods.screenShot("CompareProducts","duygu");
+        ReusableMethods.extentTestInfo("Karsilastirmak icin eklenen tum urunlerin listeye eklenmedigini gosteren ekran goruntusu alindi");
         ReusableMethods.actionScrollUp();
         ReusableMethods.waitForSecond(2);
 
-        //13- Compare ANA-SAYFAsindan cikis yapmak icin Home sekmesine tikla
+
+        //9-Karşılaştırmak İçin Seçilen Tum Ürünlerin Listelenmediğini Doğrula
+        int expectedResult=5;                                   // Kıyaslama için 5 adet ürün secildi
+        int actualResult=comparePage.compareListDuygu.size();
+        Assert.assertNotEquals(actualResult,expectedResult);
+        ReusableMethods.extentTestPass("5 adet seçilen ürünlerden 4 adedinin karsilastirma sayfasinda listelendiği doğrulandı");
+
+
+        //10- Compare ANA-SAYFAsindan cikis yapmak icin Home sekmesine tikla
         comparePage.homeButtonDuygu.click();
         ReusableMethods.extentTestPass("Compare Ana sayfasindan cikis yapildi");
         //Ana-Sayfanin acildigini dogrula
@@ -109,10 +110,6 @@ public class TC02 {
         Driver.closeDriver();
 
     }
-
-
-
-
 
 
 }

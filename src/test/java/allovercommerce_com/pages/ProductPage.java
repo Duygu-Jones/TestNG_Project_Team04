@@ -2,14 +2,14 @@ package allovercommerce_com.pages;
 
 
 import allovercommerce_com.utilities.Driver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 
 public class ProductPage {
-
-
-
-
 
     public ProductPage(){
         PageFactory.initElements(Driver.getDriver(), this);
@@ -119,13 +119,9 @@ public class ProductPage {
 
     //Duygu Jones (120)
 
-
-
-
-
-
-
-
+    @FindBy(xpath = "//a[@class='compare btn-product-icon']")                   public List<WebElement> addToCompareListDuygu;
+    @FindBy(xpath = "//a[@class='add_to_wishlist single_add_to_wishlist']")     public List<WebElement> addToWishlistListDuygu;
+    @FindBy(xpath = "//a[@class='wishlist block-type']")                        public WebElement wishlistButtonDuygu;
 
 
 
