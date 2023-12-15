@@ -1,8 +1,8 @@
 package allovercommerce_com.pages;
 
-
 import allovercommerce_com.utilities.Driver;
 import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -11,14 +11,11 @@ import org.openqa.selenium.support.PageFactory;
 public class ProductPage {
 
 
-
-
-
     public ProductPage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-
+  
 
     //Selma Simsek (20)
 
@@ -67,7 +64,10 @@ public class ProductPage {
 
 
 
-    //Salih Turkmen (70)
+   
+  
+  
+  //Salih Turkmen (70)
 
 
 
@@ -367,11 +367,6 @@ public class ProductPage {
 
 
 
-
-
-
-
-
     //Ibrahim Akar (370)
 
 
@@ -379,8 +374,17 @@ public class ProductPage {
 
 
 
+@FindBy(xpath = "//*[@name='add-to-cart']")
+    public WebElement addToCartIbrahim;
 
+@FindBy(xpath = "//i[@class='w-icon-cart']")
+    public WebElement cartSymolIbrahim;
 
+@FindBy(xpath = "//a[@class ='button checkout wc-forward']")
+    public WebElement checkOutButtonIbrahim;
+
+@FindBy(xpath = "//tr//td[@class='product-name']")
+    public WebElement productListIbrahim;
 
 
 
