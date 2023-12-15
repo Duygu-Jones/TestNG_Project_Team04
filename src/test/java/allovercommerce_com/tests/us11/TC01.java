@@ -1,6 +1,5 @@
 package allovercommerce_com.tests.us11;
 
-import allovercommerce_com.pages.AddressPage;
 import allovercommerce_com.pages.MyAccountPage;
 import allovercommerce_com.pages.SignUpInPage;
 import allovercommerce_com.utilities.ConfigReader;

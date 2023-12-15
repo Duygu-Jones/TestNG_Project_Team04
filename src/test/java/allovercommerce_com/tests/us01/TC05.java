@@ -10,8 +10,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.nio.charset.StandardCharsets;
-
 public class TC05 {
     @Test
     public void test05() {
