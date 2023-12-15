@@ -106,6 +106,17 @@ public class MyAccountPage {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 //Duygu Jones (120)
 
 
@@ -256,47 +267,7 @@ public class MyAccountPage {
 
 
 
-//Selma Aslan (270)
-    @FindBy(xpath = "//*[@class='login inline-type']")
-    public WebElement signIn;
-    @FindBy(xpath = "(//*[@data-toggle='tab'])[2]")
-    public WebElement signUp;
-    @FindBy(xpath = "//*[@id='username']")
-    public WebElement userName1;
-    @FindBy(xpath = "(//*[@class='woocommerce-Input woocommerce-Input--text input-text'])[2]")
-    public WebElement password1;
-    @FindBy(xpath = "//button[@name='login']")
-    public WebElement signInol;
-    @FindBy(xpath = "//span[.='Sign Out']")
-    public WebElement signout1;
-    @FindBy(xpath = "//a[.='Addresses']")
-    public WebElement address;
-    @FindBy(xpath = "(//*[@class='edit btn btn-link btn-primary btn-underline mb-4'])[2]")
-    public WebElement add;
-    @FindBy(xpath = "//*[@id='shipping_first_name']")
-    public WebElement firstName;
-    @FindBy(xpath = "//*[@id='shipping_last_name']")
-    public WebElement lastName;
-    @FindBy(xpath = "//*[@id='shipping_company']")
-    public WebElement company;
-    @FindBy(xpath = "//select[@data-placeholder='Select a country / region…']")
-    public WebElement country1;
-    @FindBy(xpath = "//*[@name='shipping_address_1']")
-    public WebElement streetAddress1;
-    @FindBy(xpath = "//*[@name='shipping_address_2']")
-    public WebElement streetAddress2;
-    @FindBy(xpath = "//*[@name='shipping_city']")
-    public WebElement city;
-    @FindBy(xpath = "//select[@data-placeholder='Select an option…']")
-    public WebElement state;
-    @FindBy(xpath = "//input[@name='shipping_postcode']")
-    public WebElement zipCode;
-    @FindBy(xpath = "//*[@name='save_address']")
-    public WebElement saveAddress;
-    @FindBy(xpath = "//*[.='Store Manager']")
-    public WebElement storeManager;
-    @FindBy(xpath = "(//*[@class='wcfmfa fa-cube'])[1]")
-    public WebElement product;
+    //Selma Aslan (270)
     @FindBy(xpath = "//*[@id='add_new_product_dashboard']")
     public WebElement addNew;
     @FindBy(linkText = "Province is a required field.")
@@ -315,10 +286,16 @@ public class MyAccountPage {
     public WebElement shipping;
     @FindBy(linkText = "Town / City is a required field.")
     public WebElement textTown;
-
     @FindBy(xpath = "//*[@class='register inline-type']")
     public WebElement register;
-    
+    @FindBy(xpath = "//*[@id='reg_username']")
+    public WebElement userNamebox;
+    @FindBy(xpath = "//*[@id='reg_email']")
+    public WebElement mailBox;
+    @FindBy(xpath = "//*[@id='reg_password']")
+    public WebElement passWordBox;
+    @FindBy(xpath = "//*[@id='register-policy']")
+    public WebElement tick;
 
 
 
@@ -340,33 +317,7 @@ public class MyAccountPage {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Kadir Furkan Kilic (320)
+    //Kadir Furkan Kilic (320)
 
 
 

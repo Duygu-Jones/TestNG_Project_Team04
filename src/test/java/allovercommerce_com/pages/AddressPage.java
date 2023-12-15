@@ -2,6 +2,8 @@ package allovercommerce_com.pages;
 
 
 import allovercommerce_com.utilities.Driver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
@@ -15,9 +17,7 @@ public class AddressPage {
     public AddressPage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
-
-
-//Selma Simsek (20)
+    //Selma Simsek (20)
 
 
 
@@ -217,7 +217,7 @@ public class AddressPage {
 
 
 
-    //Ismail Sap (220)
+//Ismail Sap (220)
 
 
 
@@ -268,26 +268,26 @@ public class AddressPage {
 
 
     //Selma Aslan (270)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "//*[@id='shipping_first_name']")
+    public WebElement firstName;
+    @FindBy(xpath = "//*[@id='shipping_last_name']")
+    public WebElement lastName;
+    @FindBy(xpath = "//*[@id='shipping_company']")
+    public WebElement company;
+    @FindBy(xpath = "//select[@data-placeholder='Select a country / region…']")
+    public WebElement country1;
+    @FindBy(xpath = "//*[@name='shipping_address_1']")
+    public WebElement streetAddress1;
+    @FindBy(xpath = "//*[@name='shipping_address_2']")
+    public WebElement streetAddress2;
+    @FindBy(xpath = "//*[@name='shipping_city']")
+    public WebElement city;
+    @FindBy(xpath = "//select[@data-placeholder='Select an option…']")
+    public WebElement state;
+    @FindBy(xpath = "//input[@name='shipping_postcode']")
+    public WebElement zipCode;
+    @FindBy(xpath = "//*[@name='save_address']")
+    public WebElement saveAddress;
 
 
 
@@ -368,17 +368,6 @@ public class AddressPage {
 
 
     //Ibrahim Akar (370)
-
-
-
-
-
-
-
-
-
-
-
 
 
 

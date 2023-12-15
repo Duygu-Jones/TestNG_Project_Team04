@@ -6,15 +6,20 @@ import allovercommerce_com.pages.SignUpInPage;
 import allovercommerce_com.utilities.ConfigReader;
 import allovercommerce_com.utilities.Driver;
 import allovercommerce_com.utilities.ReusableMethods;
+import org.checkerframework.checker.units.qual.K;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class TC04 {
+import java.security.Key;
+
+public class TC02 {
 
     SoftAssert softAssert = new SoftAssert();
-
+    Actions actions = new Actions(Driver.getDriver());
     @Test
     public void test01() {
         MyAccountPage alloverPage = new MyAccountPage();
@@ -23,8 +28,8 @@ public class TC04 {
 
 
         ReusableMethods.extentReportCreate("Fatma",
-                "Country/Region kutusu boş bırakılarak shipping address eklenmemeli",
-                "Shipping address eklenememeli.");
+                "Postcode/Zıp kutusu boş bırakılarak shipping address eklenmemeli",
+                "Shipping address eklenemediği doğrulanır.");
 
 
 
@@ -44,8 +49,8 @@ public class TC04 {
         ReusableMethods.extentTestInfo("Email address girildi.");
 
         //PassWord gir.
-        signUpInPage.userName1.sendKeys(fakeEmail,Keys.ENTER);
-        signUpInPage.password1.sendKeys(fakePassword1, Keys.TAB);
+        signUpInPage.userName1.sendKeys(fakeEmail);
+        signUpInPage.password1.sendKeys(fakePassword1);
         ReusableMethods.extentTestInfo("Password girildi.");
 
         //SignIn'e tıkla.
@@ -68,11 +73,6 @@ public class TC04 {
         ReusableMethods.extentTestInfo("Add butonuna tıklandı.");
 
 
-        //First Name gir.
-        String firstName = ConfigReader.getProperty("firstName");
-        shippingAddressPage.firstName.sendKeys(firstName);
-        ReusableMethods.extentTestInfo("First Name girildi.");
-
         //Last Name gir.
         String lastName = ConfigReader.getProperty("lastName");
         shippingAddressPage.lastName.sendKeys(lastName);
@@ -83,6 +83,13 @@ public class TC04 {
         String company = ConfigReader.getProperty("company");
         shippingAddressPage.company.sendKeys(company);
         ReusableMethods.extentTestInfo("Company Name girildi.");
+
+
+        //Country/Region seç.
+        Select select = new Select(shippingAddressPage.country1);
+        select.selectByVisibleText("Canada");
+        ReusableMethods.extentTestInfo("Country/Region girildi.");
+
 
 
         //Street Address2 gir.
@@ -109,10 +116,10 @@ public class TC04 {
         ReusableMethods.extentTestInfo("Province giriniz");
 
 
-
+        actions.sendKeys(Keys.PAGE_DOWN);
         //ZipCode giriniz.
         String zipCode1 = ConfigReader.getProperty("zipcode");
-        shippingAddressPage.zipCode.sendKeys(zipCode1,Keys.TAB);
+        shippingAddressPage.zipCode.sendKeys(zipCode1);
         ReusableMethods.extentTestInfo("ZipCode giriniz");
 
 
@@ -121,7 +128,13 @@ public class TC04 {
         shippingAddressPage.saveAddress.sendKeys(Keys.ENTER);
         ReusableMethods.extentTestInfo("Save Butona tıklandı.");
 
-        ReusableMethods.waitForSecond(5);
+
+
+
+
+
+
+        ReusableMethods.waitForSecond(2);
         softAssert.assertFalse(alloverPage.shipping.isDisplayed());
         ReusableMethods.extentTestInfo("Shipping adress görülmediği doğrulandı..");
         ReusableMethods.extentReportFlush();
@@ -134,6 +147,30 @@ public class TC04 {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
+
 }
+
+
+
+

@@ -268,26 +268,26 @@ public class SignUpInPage {
 
 
     //Selma Aslan (270)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "//*[@class='login inline-type']")
+    public WebElement signIn;
+    @FindBy(xpath = "(//*[@data-toggle='tab'])[2]")
+    public WebElement signUp;
+    @FindBy(xpath = "//*[@id='username']")
+    public WebElement userName1;
+    @FindBy(xpath = "(//*[@class='woocommerce-Input woocommerce-Input--text input-text'])[2]")
+    public WebElement password1;
+    @FindBy(xpath = "//button[@name='login']")
+    public WebElement signInol;
+    @FindBy(xpath = "//span[.='Sign Out']")
+    public WebElement signOut;
+    @FindBy(xpath = "//a[.='Addresses']")
+    public WebElement address;
+    @FindBy(xpath = "(//*[@class='edit btn btn-link btn-primary btn-underline mb-4'])[2]")
+    public WebElement add;
+    @FindBy(xpath = "//*[.='Store Manager']")
+    public WebElement storeManager;
+    @FindBy(xpath = "(//*[@class='wcfmfa fa-cube'])[1]")
+    public WebElement product;
 
 
 

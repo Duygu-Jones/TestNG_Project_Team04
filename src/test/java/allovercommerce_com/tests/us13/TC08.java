@@ -11,10 +11,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class TC04 {
-
+public class TC08 {
     SoftAssert softAssert = new SoftAssert();
-
     @Test
     public void test01() {
         MyAccountPage alloverPage = new MyAccountPage();
@@ -23,9 +21,8 @@ public class TC04 {
 
 
         ReusableMethods.extentReportCreate("Fatma",
-                "Country/Region kutusu boş bırakılarak shipping address eklenmemeli",
-                "Shipping address eklenememeli.");
-
+                "Postcode/Zıp kutusu boş bırakılarak shipping address eklenmemeli",
+                "Shipping address eklenememeli");
 
 
         //https://allovercommerce.com Sitesine Git ve Login Ol
@@ -44,7 +41,7 @@ public class TC04 {
         ReusableMethods.extentTestInfo("Email address girildi.");
 
         //PassWord gir.
-        signUpInPage.userName1.sendKeys(fakeEmail,Keys.ENTER);
+        signUpInPage.userName1.sendKeys(fakeEmail, Keys.ENTER);
         signUpInPage.password1.sendKeys(fakePassword1, Keys.TAB);
         ReusableMethods.extentTestInfo("Password girildi.");
 
@@ -84,6 +81,10 @@ public class TC04 {
         shippingAddressPage.company.sendKeys(company);
         ReusableMethods.extentTestInfo("Company Name girildi.");
 
+        //Country/Region seç.
+        Select select = new Select(shippingAddressPage.country1);
+        select.selectByVisibleText("Canada");
+        ReusableMethods.extentTestInfo("Country/Region girildi.");
 
         //Street Address2 gir.
         String streetAddress1 = ConfigReader.getProperty("street");
@@ -95,6 +96,7 @@ public class TC04 {
         String streetAddress2 = ConfigReader.getProperty("street1");
         shippingAddressPage.streetAddress2.sendKeys(streetAddress2);
         ReusableMethods.extentTestInfo("Street Address2girildi.");
+
 
         //City giriniz.
         String city = ConfigReader.getProperty("city1");
@@ -109,15 +111,8 @@ public class TC04 {
         ReusableMethods.extentTestInfo("Province giriniz");
 
 
-
-        //ZipCode giriniz.
-        String zipCode1 = ConfigReader.getProperty("zipcode");
-        shippingAddressPage.zipCode.sendKeys(zipCode1,Keys.TAB);
-        ReusableMethods.extentTestInfo("ZipCode giriniz");
-
-
         //Save Butona tıkla.
-        String saveButton= ConfigReader.getProperty("saveButton");
+        String saveButton = ConfigReader.getProperty("saveButton");
         shippingAddressPage.saveAddress.sendKeys(Keys.ENTER);
         ReusableMethods.extentTestInfo("Save Butona tıklandı.");
 
@@ -126,12 +121,6 @@ public class TC04 {
         ReusableMethods.extentTestInfo("Shipping adress görülmediği doğrulandı..");
         ReusableMethods.extentReportFlush();
         Driver.closeDriver();
-
-
-
-
-
-
 
 
     }

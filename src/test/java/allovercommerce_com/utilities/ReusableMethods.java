@@ -10,6 +10,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -347,10 +350,7 @@ public class ReusableMethods {
     }
 
 
-
-
-//---------------------------------------Kisisel Methodlar----------------------------------------------------------------
-
+    //---------------------------------------Kisisel Methodlar----------------------------------------------------------------
 
 
 
@@ -649,25 +649,25 @@ public class ReusableMethods {
 
     //#Selma Aslan (650)
 
+    public static void uploadFileWithRobot(String path) throws AWTException {
+        // Dosya yolu panoya kopyalanır
+        StringSelection stringSelection=new StringSelection(path);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
 
+        // Robot sınıfı kullanılarak dosya eklenir
+        Robot robot = new Robot();
+        robot.delay(1000);
 
+        // Ctrl + V (Yapıştır)
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // Enter (Onayla)
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+    }
 
 
 
@@ -747,7 +747,7 @@ public class ReusableMethods {
 
 
 
-    //Ibrahim bey; 7500
+    //Ibrahim bey; 750
     public static void deleteAll(WebElement webElement){
         String selectAll = Keys.chord(Keys.CONTROL,"a");
         webElement.sendKeys(selectAll,Keys.DELETE);
