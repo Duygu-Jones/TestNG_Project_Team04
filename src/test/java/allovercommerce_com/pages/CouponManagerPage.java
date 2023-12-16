@@ -1,6 +1,8 @@
 package allovercommerce_com.pages;
 
 import allovercommerce_com.utilities.Driver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
@@ -13,8 +15,6 @@ public class CouponManagerPage {
         PageFactory.initElements(Driver.getDriver(), this);
 
     }
-
-
 
 
     //Selma Simsek (20)
@@ -379,6 +379,44 @@ public class CouponManagerPage {
 
 
 
+    @FindBy(xpath = "//*[@class='wcfmfa fa-gift']")
+    public WebElement couponsButton;
+
+    @FindBy(xpath = "//*[@id='add_new_coupon_dashboard']")
+    public WebElement newCouponIbrahim;
+
+    @FindBy(xpath = "//input[@id='title']")
+    public WebElement couponCodeBoxIbrahim;
+
+    @FindBy(xpath = "//input[@value='Submit']")
+    public WebElement submitButtonIbrahim;
+
+    @FindBy(xpath = "//*[@class='wcfm-message wcfm-error']")
+    public WebElement couponTitleErrorMessage;
+
+    @FindBy(id = "description")
+    public WebElement descriptionBox;
+
+    @FindBy(id = "discount_type")
+    public WebElement discountType;
+
+    @FindBy(id = "coupon_amount")
+    public WebElement couponAmount;
+
+    @FindBy(id = "expiry_date")
+    public WebElement expiryDate;
+
+    @FindBy(xpath = "//*[@class='wcfm-message wcfm-success']")
+    public WebElement successMessage;
+
+    @FindBy(id = "free_shipping")
+    public WebElement freeShippingButton;
+
+    @FindBy(id = "show_on_store")
+    public WebElement showOnStoreButton;
+
+    @FindBy(xpath = "(//h2)[2]")
+    public WebElement editCouponText;
 
 
 
