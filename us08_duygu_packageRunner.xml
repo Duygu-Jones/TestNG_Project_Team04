@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="us08 Test Suite" verbose="1" >
+
+
+    <test name="Allovercommerce || us08 ||  Kullanıcı seçtiği ürünleri istek listesine ekleyebilmeli (WhishList)" >
+        <packages>
+            <package name="allovercommerce_com.tests.us08"></package>
+        </packages>
+    </test>
+
+</suite>
