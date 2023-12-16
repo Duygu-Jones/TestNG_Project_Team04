@@ -109,7 +109,6 @@ public class TC01 {
         ReusableMethods.extentTestPass("Ürün başarılı bir şekilde eklendi");
         ReusableMethods.extentReportFlush();
         ReusableMethods.waitForSecond(3);
-        //ReusableMethods.screenShotOfWebElement(storeManagerPage.upploaedCar,"uploaded car","Furkan");
         ReusableMethods.screenShot("uploadedCar","Furkan");
         Driver.getDriver().close();
         
