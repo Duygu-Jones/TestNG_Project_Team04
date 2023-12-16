@@ -17,12 +17,12 @@ public class ComparePage {
 
 
 
-//Selma Simsek (20)
 
 
 
 
 
+//Selma Simsek (25)
 
 
 
@@ -68,6 +68,10 @@ public class ComparePage {
 
 
 //Salih Turkmen (70)
+
+
+
+
 
 
 
