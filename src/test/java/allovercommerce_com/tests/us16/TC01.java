@@ -110,7 +110,7 @@ public class TC01 {
         ReusableMethods.extentReportFlush();
         ReusableMethods.waitForSecond(3);
         ReusableMethods.screenShot("uploadedCar","Furkan");
-        Driver.getDriver().close();
+        //Driver.getDriver().close();
         
 
 

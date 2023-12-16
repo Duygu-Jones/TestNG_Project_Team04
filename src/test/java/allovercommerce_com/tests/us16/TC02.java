@@ -1,10 +1,13 @@
 package allovercommerce_com.tests.us16;
 import allovercommerce_com.pages.HomePage;
 import allovercommerce_com.pages.MyAccountPage;
+import allovercommerce_com.pages.SignUpInPage;
 import allovercommerce_com.pages.StoreManagerPage;
+import allovercommerce_com.utilities.ConfigReader;
 import allovercommerce_com.utilities.Driver;
 import allovercommerce_com.utilities.ReusableMethods;
 import com.github.javafaker.Faker;
+import org.openqa.selenium.WindowType;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -21,10 +24,23 @@ public class TC02 {
     public void test01() throws InterruptedException, AWTException {
         //Verilen URL'e gidilir Sign In linkine tıklanır Username or email address kutusuna eposta adresini girilir
         // SIGN IN butonuna tıklanır
-        HomePage.vendorLogginFk();
+
+        Driver.getDriver().switchTo().newWindow(WindowType.TAB);
+        Driver.getDriver().get(ConfigReader.getProperty("URL"));
+        //Driver.getDriver().;
+       // SignUpInPage.SignInFk.click();
+       // SignUpInPage.emailFk.sendKeys(ConfigReader.getProperty("emailFk"));
+       // SignUpInPage.passwordFk.sendKeys(ConfigReader.getProperty("allowerPassFk"));
+       // SignUpInPage.submitFk.click();
+
+        //HomePage.vendorLogginFk();
         ReusableMethods.extentTestInfo("Web Sitesine Gidildilir");
+
         //My Account butonuna tıklanır
-        actions.scrollToElement(homePage.myAccountFk).perform();
+        ReusableMethods.waitForSecond(3);
+        ReusableMethods.jsScroll(homePage.myAccountFk);
+        //actions.scrollToElement().perform();
+        ReusableMethods.waitForSecond(3);
         ReusableMethods.jsClick(homePage.myAccountFk);
         ReusableMethods.extentTestInfo("My Account Linkine Tıklanır");
         //Store Manager butonuna tıklanır
@@ -39,7 +55,7 @@ public class TC02 {
         ReusableMethods.extentTestInfo("Add new butonuna tıklanır.");
         ReusableMethods.jsScroll(storeManagerPage.necessaryScrollFK);
         //Virtual  kutucusu işaretlenir
-        storeManagerPage.virtualBoxFk.click();
+        ReusableMethods.jsClick(storeManagerPage.virtualBoxFk);
         ReusableMethods.extentTestInfo("Virtual kutusu seçilir");
         //Product Title'a veri girilir
         //Price sütununa veri girilir
