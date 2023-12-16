@@ -383,7 +383,7 @@ public class OrdersPage {
     @FindBy(id = "place_order")
     public WebElement placeOrderIbrahim;
 
-    @FindBy(xpath = "(//main//div//p)[1]")
+    @FindBy(xpath = "//*[@class='woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received order-success']")
     public WebElement orderConfirmMessage;
 
     @FindBy(linkText = "My Orders")
