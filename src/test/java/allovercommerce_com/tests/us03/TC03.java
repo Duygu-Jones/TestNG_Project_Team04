@@ -3,16 +3,12 @@ package allovercommerce_com.tests.us03;
 import allovercommerce_com.pages.AddressPage;
 import allovercommerce_com.pages.HomePage;
 import allovercommerce_com.pages.MyAccountPage;
-import allovercommerce_com.pages.SignUpInPage;
 import allovercommerce_com.utilities.ConfigReader;
 import allovercommerce_com.utilities.Driver;
 import allovercommerce_com.utilities.ReusableMethods;
 import com.github.javafaker.Faker;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.beans.JavaBean;
 
 public class TC03 {
     @Test
