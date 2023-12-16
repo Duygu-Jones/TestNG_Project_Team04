@@ -168,31 +168,31 @@ public class SignUpInPage {
 
 
     //Muammer Ucar (170)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "(//a[@class='register inline-type'])")                             public  WebElement registerMU;
+    @FindBy(xpath ="(//a[@href='https://allovercommerce.com/vendor-register/'])[2]")    public  WebElement BecomeAVendorMU;
+    @FindBy(id="user_email")                                                            public  WebElement emailBoxMU;
+    @FindBy(xpath = "(//*[@class='wcfm-text wcfm_email_verified_input'])")              public WebElement verificationCodeButtonMU;
+    @FindBy(xpath ="(//a[@class='register_as_vendor'])")                                public  WebElement signUpAsAVendorButtonMU;
+    @FindBy(xpath ="//input[@id='passoword']")                                          public WebElement passwordBoxAlloverCommerMU;
+    @FindBy(xpath ="//input[@id='confirm_pwd']")                                        public WebElement confirmPasswordBoxAlloverCommerMU;
+    @FindBy(id ="password_strength")                                                    public WebElement tooShortTextMU;
+    @FindBy(id ="password_strength")                                                    public WebElement weakTextMU;
+    @FindBy(id ="password_strength")                                                    public WebElement goodTextMU;
+    @FindBy(id ="password_strength")                                                    public WebElement strongTextMU;
+    @FindBy(xpath ="(//*[@class='from'])[1]")                                           public WebElement fakeMailButtonMU;
+    @FindBy(xpath ="//span[starts-with(@id,'predmet')]")                                public WebElement fakemailVerificationCodeMU;
+    @FindBy(xpath ="//input[@id='passoword']")                                          public WebElement passwordBox1MU;
+    @FindBy(xpath ="(//*[@href='https://mail.google.com/mail/&ogbl'])")                 public WebElement gmailButtonMU;
+    @FindBy(xpath ="(//*[@href='https://accounts.google.com/AccountChooser/signinchooser?service=mail&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&flowName=GlifWebSignIn&flowEntry=AccountChooser&ec=asw-gmail-globalnav-signin'])")
+                                                                                        public WebElement signInButtonMU;
+    @FindBy(id ="identifierId")                                                         public WebElement gmailBoxMU;
+    @FindBy(xpath ="//*[@name='Passwd']")                                               public WebElement gmailPasswordBoxMU;
+    @FindBy(xpath ="(//span[@class='CJ'])[1]")                                          public WebElement otherButtonMU;
+    @FindBy(xpath ="//a[@href='https://mail.google.com/mail/u/0/#spam']")               public WebElement spamButtonMU;
+    @FindBy(xpath ="(//*[@class='bqe'])[2]")                                            public WebElement emailCamingToGmailFromAlloverCommerceMU;
+    @FindBy(xpath ="(//h2[@class='hP'])")                                               public WebElement verificationCodeCamingToGmailFromAlloverCommerceMU;
+    @FindBy(xpath = "(//*[@style='display: block;'])")
+                                                                                        public WebElement verifyTextAlloverCommerMU;
 
 
 
@@ -319,14 +319,14 @@ public class SignUpInPage {
 
     //Kadir Furkan Kilic (320)
 
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "(//*[.='Sign In'])[2]")
+    public static WebElement SignInFk;
+    @FindBy(xpath = "//*[@id='username']")
+    public static WebElement emailFk;
+    @FindBy(xpath = "//*[@id='password']")
+    public static WebElement passwordFk;
+    @FindBy(xpath = "//*[@name='login']")
+    public static WebElement submitFk;
 
 
 
@@ -368,11 +368,10 @@ public class SignUpInPage {
 
 
     //Ibrahim Akar (370)
-
-
-
-
-
+@FindBy(xpath = "//span[.='Sign In']")
+    public WebElement signInIbrahim;
+@FindBy(id = "username")
+public WebElement userNameTextBoxIbrahim;
 
 
 
