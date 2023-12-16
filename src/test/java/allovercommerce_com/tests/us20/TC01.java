@@ -20,9 +20,15 @@ public class TC01 {
     @Test
     public void testVendorButWithCoupon() {
 
+        ReusableMethods.extentReportCreate("Ibrahim",
+                "US_20 || Oluşturulan Coupon ile Vendor olarak alışveriş yapılabilmeli",
+                "TC_01 || Kullanıcı geçerli verilerle Vendor olarak kupon kullandığı bir ürün satın alabilmeli (Wire Transfer )");
+
+
         Actions actions = new Actions(Driver.getDriver());
         //Verilen URL' ye gidilir
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
+        ReusableMethods.extentTestInfo("Verilen siteye gidildi.");
 
         //Sign-In butonuna tıklanır
         signUpInPage.signInIbrahim.click();
@@ -30,17 +36,22 @@ public class TC01 {
         //Kullanıcı adı girilir vendorvendoring@gmail.com
         //Şifre girilir vendor123.
         //Home page'e gidilir
-        signUpInPage.userNameTextBoxIbrahim.sendKeys("vendorvendoring@gmail.com", Keys.TAB, "vendor123.", Keys.ENTER);
+        String vendorEmail = ConfigReader.getProperty("vendorEmail");
+        String vendorPassword = ConfigReader.getProperty("vendorSifre");
+        signUpInPage.userNameTextBoxIbrahim.sendKeys(vendorEmail, Keys.TAB, vendorPassword, Keys.ENTER);
+        ReusableMethods.extentTestInfo("Vendor hesabına giris yapildi");
 
         //Home page de olunduğu doğrulanır
         String expectedTitle = "Allover Commerce";
         String actualTitle = Driver.getDriver().getTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
         ReusableMethods.waitForSecond(2);
+        ReusableMethods.extentTestPass("Anasayfada olundugu dogrulandı");
 
-        //Search kısmından ürün aratılır Chess
+        //Search kısmından ürün aratılır Vintage Toy Car
         homePage.searchBoxIbrahim.sendKeys("Vintage Toy Car", Keys.ENTER);
         ReusableMethods.waitForSecond(2);
+        ReusableMethods.extentTestInfo("Search kisminda ürün aratildi");
 
         //ADD TO CART butonuna tıklayarak ürünü sepete eklenir
         productPage.addToCartIbrahim.click();
@@ -53,33 +64,40 @@ public class TC01 {
 
         //Sepete eklenen ürünün checkout sayfasındaki görünümü doğrulanır
         Assert.assertTrue(productPage.productListIbrahim.getText().contains("Vintage Toy Car"));
+        ReusableMethods.extentTestPass("Urun goruntulenme dogrulandı");
 
 
 
         //Toplam tutar bilgisinin checkout sayfasındaki görünümü doğrulanır
         Assert.assertTrue(productPage.totalAmountIbrahim.isDisplayed());
+        ReusableMethods.extentTestPass("Toplam tutarın goruntulendigi dogrulandi.");
 
         //coupon girilir
-        productPage.couponBox.sendKeys("dsc18904",Keys.TAB,Keys.ENTER);
+        productPage.couponBox.sendKeys("dsc18910",Keys.TAB,Keys.ENTER);
+        ReusableMethods.extentTestInfo("Kupon eklendi.");
 
         //coupon ekleme doğrulama
         String couponMessage = productPage.couponAddMessage.getText();
         Assert.assertTrue(couponMessage.contains("dsc18904"));
+        ReusableMethods.extentTestPass("Kuponun eklendigi dogrulandı.");
 
         //proceed to checkout
-        productPage.proceedToCheckOut.click();
+        ReusableMethods.jsClick(productPage.proceedToCheckOut);
+
 
         //müsteri bilgileri otomatik gelir
 
         //Place order butonuna tıklanır
         ReusableMethods.waitForSecond(3);
-        ordersPage.placeOrderIbrahim.click();
+        ReusableMethods.jsClick(ordersPage.placeOrderIbrahim);
+
 
         //"Kullanıcı  ""Thank you. Your order has been received."" mesajının görüldüğü onaylanır.
         ReusableMethods.waitForSecond(6);
         String actualConfirmMessage = ordersPage.orderConfirmMessage.getText();
         String expectedConfirmMessage = "Thank you. Your order has been received.";
         Assert.assertEquals(actualConfirmMessage,expectedConfirmMessage);
+        ReusableMethods.extentTestPass("Siparis tamamlandi.");
 
         //Sayfanın en altında bulunan MY ACCOUNT kısmına gelir
         actions.sendKeys(Keys.END).perform();
@@ -93,6 +111,10 @@ public class TC01 {
 
         //Alışveriş ayrıntılarının görüntülendiği doğrulanır
         Assert.assertTrue(ordersPage.orderDetails.isDisplayed());
+        ReusableMethods.extentTestPass("Alisveris ayrintilarinin görüntülendigi dogrulandi.");
+
+        ReusableMethods.extentReportFlush();
+        Driver.closeDriver();
 
 
 

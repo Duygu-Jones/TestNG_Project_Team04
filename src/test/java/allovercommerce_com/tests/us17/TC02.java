@@ -20,9 +20,15 @@ public class TC02 {
     OrdersPage ordersPage = new OrdersPage();
     @Test
     public void testVendorBuy() {
+
+        ReusableMethods.extentReportCreate("Ibrahim",
+                "US_17 || Vendor olarak alışveriş yapabilmeliyim.",
+                "TC_02 || Kullanıcı (geçerli verilerle) vendor olarak birden fazla ürünü satın alabilmeli (Wire Transfer )");
+
             Actions actions = new Actions(Driver.getDriver());
         //Verilen URL' ye gidilir
             Driver.getDriver().get(ConfigReader.getProperty("URL"));
+        ReusableMethods.extentTestInfo("Verilen siteye gidildi.");
 
         //Sign-In butonuna tıklanır
         signUpInPage.signInIbrahim.click();
@@ -30,17 +36,22 @@ public class TC02 {
         //Kullanıcı adı girilir vendorvendoring@gmail.com
         //Şifre girilir vendor123.
         //Home page'e gidilir
-        signUpInPage.userNameTextBoxIbrahim.sendKeys("vendorvendoring@gmail.com", Keys.TAB, "vendor123.", Keys.ENTER);
+        String vendorEmail = ConfigReader.getProperty("vendorEmail");
+        String vendorPassword = ConfigReader.getProperty("vendorSifre");
+        signUpInPage.userNameTextBoxIbrahim.sendKeys(vendorEmail, Keys.TAB, vendorPassword, Keys.ENTER);
+        ReusableMethods.extentTestInfo("Vendor hesabına giris yapildi");
 
         //Home page de olunduğu doğrulanır
         String expectedTitle = "Allover Commerce";
         String actualTitle = Driver.getDriver().getTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
         ReusableMethods.waitForSecond(2);
+        ReusableMethods.extentTestPass("Anasayfada olundugu dogrulandı");
 
-        //Search kısmından ürün aratılır Chess
+        //Search kısmından ürün aratılır Vintage Toy Car
         homePage.searchBoxIbrahim.sendKeys("Vintage Toy Car", Keys.ENTER);
         ReusableMethods.waitForSecond(2);
+        ReusableMethods.extentTestInfo("Search kisminda ürün aratildi");
 
         //ADD TO CART butonuna tıklayarak ürünü sepete eklenir
         productPage.addToCartIbrahim.click();
@@ -61,6 +72,7 @@ public class TC02 {
         //Sepete eklenen ürünlerin checkout sayfasındaki görünümü doğrulanır
         Assert.assertTrue(productPage.firstProduct.getText().contains("Vintage Toy Car"));
         Assert.assertTrue(productPage.secondProduct.getText().contains("Automatic Crusher"));
+        ReusableMethods.extentTestPass("Urunlerin goruntulenme dogrulandı");
 
         //müsteri bilgileri otomatik gelir
 
@@ -70,13 +82,15 @@ public class TC02 {
 
         //Place order butonuna tıklanır
         ReusableMethods.waitForSecond(3);
-        ordersPage.placeOrderIbrahim.click();
+        ReusableMethods.jsClick(ordersPage.placeOrderIbrahim);
+        
 
         //"Kullanıcı  ""Thank you. Your order has been received."" mesajının görüldüğü onaylanır.
         ReusableMethods.waitForSecond(6);
         String actualConfirmMessage = ordersPage.orderConfirmMessage.getText();
         String expectedConfirmMessage = "Thank you. Your order has been received.";
         Assert.assertEquals(actualConfirmMessage,expectedConfirmMessage);
+        ReusableMethods.extentTestPass("Siparis tamamlandi.");
 
         //Sayfanın en altında bulunan MY ACCOUNT kısmına gelir
         actions.sendKeys(Keys.END).perform();
@@ -90,6 +104,10 @@ public class TC02 {
 
         //Alışveriş ayrıntılarının görüntülendiği doğrulanır
         Assert.assertTrue(ordersPage.orderDetails.isDisplayed());
+        ReusableMethods.extentTestPass("Alisveris ayrintileri goruntulendi");
+
+        ReusableMethods.extentReportFlush();
+        Driver.closeDriver();
 
 
 
