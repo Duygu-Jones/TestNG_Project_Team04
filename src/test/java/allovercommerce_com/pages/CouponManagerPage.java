@@ -368,17 +368,6 @@ public class CouponManagerPage {
 
 
     //Ibrahim Akar (370)
-
-
-
-
-
-
-
-
-
-
-
     @FindBy(xpath = "//*[@class='wcfmfa fa-gift']")
     public WebElement couponsButton;
 

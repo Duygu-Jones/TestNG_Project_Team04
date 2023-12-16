@@ -1,17 +1,17 @@
 package allovercommerce_com.pages;
 
-
 import allovercommerce_com.utilities.Driver;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.util.List;
 
 public class ProductPage {
 
-    public ProductPage(){
+
+
+
+    public ProductPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -370,52 +370,36 @@ public class ProductPage {
     //Ibrahim Akar (370)
     @FindBy(xpath = "//*[@name='add-to-cart']")
     public WebElement addToCartIbrahim;
-
     @FindBy(xpath = "//i[@class='w-icon-cart']")
     public WebElement cartSymolIbrahim;
-
     @FindBy(xpath = "//a[@class ='button checkout wc-forward']")
     public WebElement checkOutButtonIbrahim;
-
     @FindBy(xpath = "//tr//td[@class='product-name']")
     public WebElement productListIbrahim;
-
-    @FindBy(xpath = "//th[.='Total']")
+    @FindBy(xpath = "(//bdi)[6]")
     public WebElement totalAmountIbrahim;
-
     @FindBy(xpath = "(//tr//td[@class='product-name'])[1]")
     public WebElement firstProduct;
-
     @FindBy(xpath = "(//tr//td[@class='product-name'])[2]")
     public WebElement secondProduct;
-
     @FindBy(xpath = "//*[@class='woocommerce-message alert alert-simple alert-btn alert-success']")
     public WebElement addToCartConfirm;
-
     @FindBy(xpath = "//*[@class='cart-item-meta mini-item-meta']")
     public WebElement cartDisplay;
-
     @FindBy(xpath = "//*[@class='button wc-forward']")
     public WebElement viewCart;
-
     @FindBy(xpath = "//*[@class='quantity-plus w-icon-plus']")
     public WebElement productPlus;
-
     @FindBy(name = "update_cart")
     public WebElement updateCart;
-
     @FindBy(xpath = "//*[@class='input-text qty text']")
     public WebElement productQuantity;
-
     @FindBy(xpath = "//button[@class='quantity-minus w-icon-minus']")
     public WebElement productMinus;
-
     @FindBy(id ="coupon_code" )
     public WebElement couponBox;
-
     @FindBy(xpath = "//*[@class='cart-discount coupon-dsc18904']")
     public WebElement couponAddMessage;
-
     @FindBy(xpath = "//*[@class='checkout-button button alt wc-forward']")
     public WebElement proceedToCheckOut;
 

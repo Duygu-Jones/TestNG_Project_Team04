@@ -15,6 +15,8 @@ public class AddressPage {
     public AddressPage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
+
+
     //Selma Simsek (20)
 
     @FindBy(xpath = "(//a[.='Add'])[1]") public WebElement addButtonSS;
@@ -166,8 +168,6 @@ public class AddressPage {
 
 
     //Muammer Ucar (170)
-
-
 
 
 

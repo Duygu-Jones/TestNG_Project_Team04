@@ -113,6 +113,10 @@ public class WishlistPage {
 
 
 
+
+
+
+
     //Duygu Jones (120)
     @FindBy(xpath = "//tbody//tr")      public List<WebElement> wishlistListDuygu;
     @FindBy(xpath = "//button[@title='Quick View']")        public List<WebElement> quickViewButtonDuygu;
@@ -140,6 +144,10 @@ public class WishlistPage {
     @FindBy(xpath="//button[@id='place_order']")    public WebElement placeOrderButtonDuygu;
     @FindBy(xpath="//*[.='Thank you. Your order has been received.']")    public WebElement orderConfirmedMessageDuygu;
     @FindBy(xpath=" //*[@class=' alert alert-simple alert-icon alert-close-top alert-danger']")    public WebElement fieldIsRequiredMessageDuygu;
+
+
+
+
 
 
 

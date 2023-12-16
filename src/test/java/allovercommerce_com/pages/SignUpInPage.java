@@ -319,14 +319,14 @@ public class SignUpInPage {
 
     //Kadir Furkan Kilic (320)
 
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "(//*[.='Sign In'])[2]")
+    public static WebElement SignInFk;
+    @FindBy(xpath = "//*[@id='username']")
+    public static WebElement emailFk;
+    @FindBy(xpath = "//*[@id='password']")
+    public static WebElement passwordFk;
+    @FindBy(xpath = "//*[@name='login']")
+    public static WebElement submitFk;
 
 
 
@@ -368,14 +368,8 @@ public class SignUpInPage {
 
 
     //Ibrahim Akar (370)
-
-
-
-
-
 @FindBy(xpath = "//span[.='Sign In']")
     public WebElement signInIbrahim;
-
 @FindBy(id = "username")
 public WebElement userNameTextBoxIbrahim;
 
