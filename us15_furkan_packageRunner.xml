@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="us15 Test Suite" verbose="1" >
+
+
+    <test name="Allovercommerce || us15 || Vendor olarak ürün ekleme seçeneklerini görebilmeli 2" >
+        <packages>
+            <package name="allovercommerce_com.tests.us15"></package>
+        </packages>
+    </test>
+
+</suite>
