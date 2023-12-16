@@ -267,7 +267,35 @@ public class MyAccountPage {
 
 
 
-//Selma Aslan (270)
+    //Selma Aslan (270)
+    @FindBy(xpath = "//*[@id='add_new_product_dashboard']")
+    public WebElement addNew;
+    @FindBy(linkText = "Province is a required field.")
+    public WebElement province;
+    @FindBy(linkText = "First name is a required field.")
+    public WebElement textFirst;
+    @FindBy(xpath = "(//*[@class='fas fa-exclamation-triangle'])[1]")
+    public WebElement textLast;
+    @FindBy(xpath = "//*[@class='fas fa-exclamation-triangle']")
+    public WebElement textCountry;
+    @FindBy(xpath = "//*[@class='fas fa-exclamation-triangle']")
+    public WebElement textPostcode;
+    @FindBy(xpath = "//*[@class='fas fa-check']")
+    public WebElement textSuccessfully;
+    @FindBy(xpath = "//h3[.='Shipping address']")
+    public WebElement shipping;
+    @FindBy(linkText = "Town / City is a required field.")
+    public WebElement textTown;
+    @FindBy(xpath = "//*[@class='register inline-type']")
+    public WebElement register;
+    @FindBy(xpath = "//*[@id='reg_username']")
+    public WebElement userNamebox;
+    @FindBy(xpath = "//*[@id='reg_email']")
+    public WebElement mailBox;
+    @FindBy(xpath = "//*[@id='reg_password']")
+    public WebElement passWordBox;
+    @FindBy(xpath = "//*[@id='register-policy']")
+    public WebElement tick;
 
 
 
@@ -289,39 +317,11 @@ public class MyAccountPage {
 
 
 
+    //Kadir Furkan Kilic (320)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Kadir Furkan Kilic (320)
-
-
-
-
+    @FindBy(xpath = "//*[@href='https://allovercommerce.com/store-manager/']")
+    public WebElement storeManagerFk;
 
 
 

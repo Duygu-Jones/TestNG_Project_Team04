@@ -368,11 +368,15 @@ public class CartPage {
 
 
     //Ibrahim Akar (370)
-
-
-
-
-
+//sepete ekleme
+@FindBy(xpath = "//*[@name='add-to-cart']")
+  public WebElement addToCart;
+//cart ikonu
+@FindBy(xpath = "//i[@class='w-icon-cart']")
+  public WebElement cart;
+//Chekcout
+@FindBy(xpath = "//a[@class ='button checkout wc-forward']")
+  public WebElement checkout;
 
 
 

@@ -15,6 +15,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -26,8 +29,6 @@ import java.util.List;
 
 public class ReusableMethods {
 
-
-
 //--------------------------------------wait: HARD WAIT METHOD----------------------------------------------------------
     public static void waitForSecond(int second) {
         try {
@@ -36,7 +37,6 @@ public class ReusableMethods {
             throw new RuntimeException(e);
         }
     }
-
 
 //---------------------------------------waits: WAIT EXPLICIT METHODS----------------------------------------------------
 
@@ -61,16 +61,12 @@ public class ReusableMethods {
 
     }
 
-
     //Wait For Alert
     public static void waitForAlert(int second) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(second));
         wait.until(ExpectedConditions.alertIsPresent());
 
     }
-
-
-
 //-------------------------------------------ALERT HANDLES--------------------------------------------------------------
 
     //Alert ACCEPT
@@ -93,7 +89,6 @@ public class ReusableMethods {
         Driver.getDriver().switchTo().alert().sendKeys(text);
     }
 
-
 //-----------------------------------ddm-SELECT-------------------------------------------------------------------------
 
     //DropDown VisibleText ile secer
@@ -114,7 +109,6 @@ public class ReusableMethods {
         select.selectByValue(optionsValue);
     }
 
-
 //------------------------------CheckBox-------------------------------------------------------------------------------
     public static void checkTheBox(WebElement checkbox){
         if (!checkbox.isSelected()){
@@ -122,14 +116,12 @@ public class ReusableMethods {
         }
     }
 
-
 //-----------------------------ACTIONS----------------------------------------------------------------------------------
 
     //ACTIONS SCROLL_DOWN : sayfayi 1 kez asagi kaydirir
     public static void actionScrollDown(){
         new Actions(Driver.getDriver()).sendKeys(Keys.PAGE_DOWN).build().perform();
     }
-
 
     //ACTIONS SCROLL_END : Sayfanin en sonuna gider
     public static void actionScrollEnd(){
@@ -142,11 +134,14 @@ public class ReusableMethods {
     }
 
     //ACTIONS SCROLL_HOME :  sayfanin en basina gider
-    public static void actionScrollHome(){
-        new Actions(Driver.getDriver()).sendKeys(Keys.HOME).build().perform();
+    public static void actionScrollHome(){ new Actions(Driver.getDriver()).sendKeys(Keys.HOME).build().perform();
     }
 
-
+    //comeOnTheElement : element uzerine gider
+    public static void actionComeOnTheElement(WebElement element){
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(element).build().perform();
+    }
 
 //-------------------------------SwitchTo:  Window  / iframe ----------------------------------------------------------
 
@@ -179,9 +174,6 @@ public class ReusableMethods {
         Driver.getDriver().switchTo().defaultContent();
     }
 
-
-
-
 //----------------------------------------- Screen Shots Methods --------------------------------------------------------
 
     //Tüm Sayfa ScreenShot
@@ -190,9 +182,6 @@ public class ReusableMethods {
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
         String filePath = System.getProperty("user.dir") + "/src/test/java/allovercommerce_com/testoutputs/screenShots/"
                                                                             +yourName + "_"+ imgName+ "_"+  date + ".png";
-
-
-
         try {
             Files.write(Paths.get(filePath),ts.getScreenshotAs(OutputType.BYTES));
         } catch (IOException e) {
@@ -213,8 +202,6 @@ public class ReusableMethods {
             throw new RuntimeException(e);
         }
     }
-
-
 //--------------------------------------------WebTable-------------------------------------------------------------------
 
     //WebTable
@@ -271,16 +258,11 @@ public class ReusableMethods {
         String attribute_Value = (String) js.executeScript("return document.getElementById('" + id + "')." + attributeName);
         System.out.println("Attribute Value: = " + attribute_Value);
     }
-
-
-
-
 //----------------------------- Extent Reports --------------------------------------------------------------------------
 
     protected static ExtentReports extentReports;                //--> Raporlamayi baslatir
     protected static ExtentHtmlReporter extentHtmlReporter;      //--> html formatinda raporlari olusturur
     protected static ExtentTest extentTest;                      //--> Test adimlarina bilgi ekler, buna yonelik methodlari icerir
-
 
     public static void extentReportCreate(String yourName, String us_NoBaslik, String tc_NoBaslik){
 
@@ -314,11 +296,8 @@ public class ReusableMethods {
             extentReports.setSystemInfo("QA", yourName);
             extentReports.setSystemInfo("Website: ", "Allovercommerce.com");
             extentReports.setSystemInfo("User_Story", us_NoBaslik);
-            extentReports.setSystemInfo("Test_Case", tc_NoBaslik);
-
         }
     }
-
 
     //test steps'leri bu method ile girilir
     public static void extentTestInfo(String testStepsMessage) {
@@ -326,7 +305,6 @@ public class ReusableMethods {
             extentTest.info(testStepsMessage);
         }
     }
-
 
     //Test gecer ise; Test Passed rapor mesaji verir
     public static void extentTestPass(String expectedMessage) {
@@ -342,7 +320,6 @@ public class ReusableMethods {
         }
     }
 
-
     // ExtentReports objesinin flush() metodunu çağırarak rapor dosyasını oluşturur ve kaydeder:
     //      !!! test sonunda mutlaka eklenmelidir
     public static void extentReportFlush() {
@@ -352,9 +329,32 @@ public class ReusableMethods {
     }
 
 
+    //---------------------------------------Kisisel Methodlar----------------------------------------------------------------
 
 
-//---------------------------------------Kisisel Methodlar----------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -649,25 +649,25 @@ public class ReusableMethods {
 
     //#Selma Aslan (650)
 
+    public static void uploadFileWithRobot(String path) throws AWTException {
+        // Dosya yolu panoya kopyalanır
+        StringSelection stringSelection=new StringSelection(path);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
 
+        // Robot sınıfı kullanılarak dosya eklenir
+        Robot robot = new Robot();
+        robot.delay(1000);
 
+        // Ctrl + V (Yapıştır)
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // Enter (Onayla)
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+    }
 
 
 
@@ -747,7 +747,7 @@ public class ReusableMethods {
 
 
 
-    //Ibrahim bey; 7500
+    //Ibrahim bey; 750
     public static void deleteAll(WebElement webElement){
         String selectAll = Keys.chord(Keys.CONTROL,"a");
         webElement.sendKeys(selectAll,Keys.DELETE);
