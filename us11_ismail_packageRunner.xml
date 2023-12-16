@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="us11 Test Suite" verbose="1" >
+
+
+    <test name="Allovercommerce || us11 || Vendor sign in, Vendor olarak Sign in yapılabilmeli" >
+        <packages>
+            <package name="allovercommerce_com.tests.us11"></package>
+        </packages>
+    </test>
+
+</suite>
