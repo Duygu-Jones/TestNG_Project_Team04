@@ -4,9 +4,9 @@
 <suite name="us04 Test Suite" verbose="1" >
 
 
-    <test name="Allovercommerce || us07 || Kullanıcı seçtiği ürünleri karşılaştırabilmeli (Compare)" >
+    <test name="Allovercommerce || us04 || Kullanıcı Shipping Adress ekleyebilmeli" >
         <packages>
-            <package name="allovercommerce_com.tests.us07"></package>
+            <package name="allovercommerce_com.tests.us04"></package>
         </packages>
     </test>
 
