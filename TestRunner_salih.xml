@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Allovercommerce Test Suite" verbose="1" >
+
+
+    <test name="Allovercommerce | Kullanici kayit olabilmeli-duygu" >
+       <packages>
+           <package name="allovercommerce_com.tests.us04"></package>
+       </packages>
+    </test>
+
+</suite>
+
+
+
