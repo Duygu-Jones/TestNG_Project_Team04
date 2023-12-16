@@ -302,7 +302,7 @@ public class StoreManagerPage {
  public WebElement external;
  @FindBy(xpath = "//*[@id='featured_img_display']")
  public WebElement bigFoto;
- @FindBy(xpath = "//*[@id='gallery_img_gimage_0_display']")
+ @FindBy(xpath = "(//*[@data-placeholder='https://allovercommerce.com/wp-content/plugins/wc-frontend-manager/includes/libs/upload/images/Placeholder.png'])[2]")
  public WebElement smallFoto;
  @FindBy(xpath = "//*[@id='__wp-uploader-id-1']")
  public WebElement selectLoad;
