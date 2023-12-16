@@ -2,7 +2,6 @@ package allovercommerce_com.tests.us04;
 
 import allovercommerce_com.pages.HomePage;
 import allovercommerce_com.pages.MyAccountPage;
-import allovercommerce_com.pages.SignUpInPage;
 import allovercommerce_com.utilities.Driver;
 import allovercommerce_com.utilities.ReusableMethods;
 import com.github.javafaker.Faker;

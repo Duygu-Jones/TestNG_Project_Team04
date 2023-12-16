@@ -6,11 +6,8 @@ import allovercommerce_com.utilities.ConfigReader;
 import allovercommerce_com.utilities.Driver;
 import allovercommerce_com.utilities.ReusableMethods;
 import com.github.javafaker.Faker;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.nio.charset.StandardCharsets;
 
 public class TC02 {
     @Test
