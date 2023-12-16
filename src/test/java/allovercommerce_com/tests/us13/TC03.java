@@ -21,7 +21,7 @@ public class TC03 {
         MyAccountPage alloverPage = new MyAccountPage();
         SignUpInPage signUpInPage = new SignUpInPage();
         AddressPage shippingAddressPage = new AddressPage();
-
+         Actions actions = new Actions(Driver.getDriver());
         ReusableMethods.extentReportCreate("Fatma",
                 "Last Name kutusu boş bırakılarak shipping address eklenmemeli",
                 "Shipping address eklenememeli.");
@@ -101,7 +101,7 @@ public class TC03 {
         shippingAddressPage.city.sendKeys(city);
         ReusableMethods.extentTestInfo("City giriniz");
 
-
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
 
         //Province giriniz.
         Select select1 = new Select(shippingAddressPage.state);
@@ -112,14 +112,14 @@ public class TC03 {
 
         //ZipCode giriniz.
         String zipCode1 = ConfigReader.getProperty("zipcode");
-        shippingAddressPage.zipCode.sendKeys(zipCode1,Keys.TAB);
+        shippingAddressPage.zipCode.sendKeys(zipCode1);
         ReusableMethods.extentTestInfo("ZipCode giriniz");
 
 
         //Save Butona tıkla.
-        String saveButton= ConfigReader.getProperty("saveButton");
-        shippingAddressPage.saveAddress.sendKeys(Keys.ENTER);
-        ReusableMethods.extentTestInfo("Save Butona tıklandı.");
+         String saveButton= ConfigReader.getProperty("saveButton");
+         shippingAddressPage.saveAddress.sendKeys(Keys.ENTER);
+         ReusableMethods.extentTestInfo("Save Butona tıklandı.");
 
 
 
@@ -128,7 +128,7 @@ public class TC03 {
         softAssert.assertFalse(alloverPage.shipping.isDisplayed());
         ReusableMethods.extentTestInfo("Shipping adress görülmediği doğrulandı.");
         ReusableMethods.extentReportFlush();
-       Driver.closeDriver();
+        Driver.closeDriver();
 
 
 
