@@ -9,14 +9,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC01 {
+public class TC05 {
     SignUpInPage signUpInPage = new SignUpInPage();
     MyAccountPage myAccountPage = new MyAccountPage();
     CouponManagerPage couponManagerPage = new CouponManagerPage();
-
     @Test
     public void testCouponCreate() {
         Actions actions = new Actions(Driver.getDriver());
@@ -56,5 +56,13 @@ public class TC01 {
         //coupon code
         String coupon = "dsc18904";
         couponManagerPage.couponCodeBoxIbrahim.sendKeys(coupon);
+
+        //description
+        couponManagerPage.descriptionBox.sendKeys("%10 discount");
+
+        //Percentage
+        Select select = new Select(couponManagerPage.discountType);
+        select.selectByIndex(1);
+
     }
 }

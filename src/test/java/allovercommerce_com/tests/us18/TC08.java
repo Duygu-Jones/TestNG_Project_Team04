@@ -9,14 +9,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC01 {
+import java.time.LocalDateTime;
+
+public class TC08 {
     SignUpInPage signUpInPage = new SignUpInPage();
     MyAccountPage myAccountPage = new MyAccountPage();
     CouponManagerPage couponManagerPage = new CouponManagerPage();
-
     @Test
     public void testCouponCreate() {
         Actions actions = new Actions(Driver.getDriver());
@@ -56,5 +58,36 @@ public class TC01 {
         //coupon code
         String coupon = "dsc18904";
         couponManagerPage.couponCodeBoxIbrahim.sendKeys(coupon);
+
+        //description
+        couponManagerPage.descriptionBox.sendKeys("%10 discount");
+
+        //Percentage
+        Select select = new Select(couponManagerPage.discountType);
+        select.getFirstSelectedOption();
+
+        //coupon amount
+        ReusableMethods.deleteAll(couponManagerPage.couponAmount);
+        couponManagerPage.couponAmount.sendKeys("10");
+
+        //Amount dogrulama
+        String expectedAmount = "10";
+        String actualAmount = couponManagerPage.couponAmount.getAttribute("value");
+        Assert.assertEquals(actualAmount,expectedAmount);
+
+        //geçmiş tarih girilir
+        String inValidExpiryDate = "2020-12-25";
+        couponManagerPage.expiryDate.sendKeys(inValidExpiryDate,Keys.ENTER,Keys.ENTER,Keys.TAB,Keys.END,Keys.PAGE_UP);
+
+        //Submit -- iki KEYS:ENTER ile yapıldı
+
+
+        LocalDateTime ldt = LocalDateTime.now(); //formatter ekle
+        String expectedSuccesMessage ="Please insert further than "+ldt;
+        System.out.println(expectedSuccesMessage);
+        String actualSuccesMessage = couponManagerPage.successMessage.getText();
+        System.out.println(actualSuccesMessage);
+        Assert.assertEquals(actualSuccesMessage, expectedSuccesMessage);
+
     }
 }

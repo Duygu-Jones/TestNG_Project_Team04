@@ -1,4 +1,4 @@
-package allovercommerce_com.tests.us20;
+package allovercommerce_com.tests.us17;
 
 import allovercommerce_com.pages.HomePage;
 import allovercommerce_com.pages.OrdersPage;
@@ -12,17 +12,17 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC01 {
+public class TC05 {
     SignUpInPage signUpInPage = new SignUpInPage();
     HomePage homePage = new HomePage();
     ProductPage productPage = new ProductPage();
+
     OrdersPage ordersPage = new OrdersPage();
     @Test
-    public void testVendorButWithCoupon() {
-
-        Actions actions = new Actions(Driver.getDriver());
+    public void testVendorBuy() {
+            Actions actions = new Actions(Driver.getDriver());
         //Verilen URL' ye gidilir
-        Driver.getDriver().get(ConfigReader.getProperty("URL"));
+            Driver.getDriver().get(ConfigReader.getProperty("URL"));
 
         //Sign-In butonuna tıklanır
         signUpInPage.signInIbrahim.click();
@@ -48,51 +48,49 @@ public class TC01 {
         //Cart sembolune tıklanır
         productPage.cartSymolIbrahim.click();
 
-        //view vart butonuna tıklanır
-        productPage.viewCart.click();
+        //CHECKOUT butonuna tıklanır
+        productPage.checkOutButtonIbrahim.click();
 
         //Sepete eklenen ürünün checkout sayfasındaki görünümü doğrulanır
         Assert.assertTrue(productPage.productListIbrahim.getText().contains("Vintage Toy Car"));
 
-
+        //müsteri bilgileri otomatik gelir
+        //zipcode bos bırakılır.
+        ReusableMethods.deleteAll(ordersPage.zipCodeIbrahim);
 
         //Toplam tutar bilgisinin checkout sayfasındaki görünümü doğrulanır
         Assert.assertTrue(productPage.totalAmountIbrahim.isDisplayed());
 
-        //coupon girilir
-        productPage.couponBox.sendKeys("dsc18904",Keys.TAB,Keys.ENTER);
-
-        //coupon ekleme doğrulama
-        String couponMessage = productPage.couponAddMessage.getText();
-        Assert.assertTrue(couponMessage.contains("dsc18904"));
-
-        //proceed to checkout
-        productPage.proceedToCheckOut.click();
-
-        //müsteri bilgileri otomatik gelir
-
         //Place order butonuna tıklanır
         ReusableMethods.waitForSecond(3);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
         ordersPage.placeOrderIbrahim.click();
 
-        //"Kullanıcı  ""Thank you. Your order has been received."" mesajının görüldüğü onaylanır.
+        //"Kullanıcı  "BILLING POSTCODE / ZIP is a required field" mesajının görüldüğü onaylanır.
         ReusableMethods.waitForSecond(6);
-        String actualConfirmMessage = ordersPage.orderConfirmMessage.getText();
-        String expectedConfirmMessage = "Thank you. Your order has been received.";
-        Assert.assertEquals(actualConfirmMessage,expectedConfirmMessage);
+        String actualErrorMessage = ordersPage.zipCodeMessageIbrahim.getText();
+        String expectedErrorMessage = "BILLING POSTCODE / ZIP is a required field";
+        Assert.assertEquals(actualErrorMessage,expectedErrorMessage);
 
-        //Sayfanın en altında bulunan MY ACCOUNT kısmına gelir
-        actions.sendKeys(Keys.END).perform();
 
-        //My Orders butonuna tıklanır
-        ReusableMethods.waitForSecond(3);
-        ordersPage.myOrdersButton.click();
 
-        //VIEW butonuna tıklanır WebElement view = Driver.getDriver().
-        ordersPage.orderView.click();
 
-        //Alışveriş ayrıntılarının görüntülendiği doğrulanır
-        Assert.assertTrue(ordersPage.orderDetails.isDisplayed());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

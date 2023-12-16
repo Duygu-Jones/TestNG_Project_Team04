@@ -1,17 +1,20 @@
 package allovercommerce_com.tests.us19;
 
 import allovercommerce_com.pages.HomePage;
+import allovercommerce_com.pages.ProductPage;
 import allovercommerce_com.pages.SignUpInPage;
 import allovercommerce_com.utilities.ConfigReader;
 import allovercommerce_com.utilities.Driver;
 import allovercommerce_com.utilities.ReusableMethods;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC01 {
-
+public class TC04 {
+    ProductPage productPage = new ProductPage();
     SignUpInPage signUpInPage = new SignUpInPage();
     HomePage homePage = new HomePage();
     @Test
@@ -37,6 +40,36 @@ public class TC01 {
 
         //doğrulama
         Assert.assertTrue(Driver.getDriver().getTitle().contains(searchProduct));
+
+
+        //ADD TO CART butonuna tıklayarak ürünü sepete eklenir
+        productPage.addToCartIbrahim.click();
+
+        //add to cart ekleme doğrulama
+        String actualAddToCartConfirmMessage = productPage.addToCartConfirm.getText();
+        String expectedContains ="has been added to your cart.";
+        Assert.assertTrue(actualAddToCartConfirmMessage.contains(expectedContains));
+
+        //Cart sembolune tıklanır
+        productPage.cartSymolIbrahim.click();
+
+        //Cart display
+        String cartDisplayText = productPage.cartDisplay.getText();
+        Assert.assertTrue(cartDisplayText.contains(searchProduct));
+
+        //View cart
+        productPage.viewCart.click();
+
+        //Ürün artırma
+        productPage.productPlus.click();
+
+        //update cart
+        productPage.updateCart.click();
+        ReusableMethods.waitForSecond(5);
+
+        //quantity
+        String actualQuantity = productPage.productQuantity.getAttribute("value");
+        Assert.assertEquals(actualQuantity,"2");
 
     }
 }

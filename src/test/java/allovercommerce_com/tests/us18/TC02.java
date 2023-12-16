@@ -12,11 +12,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC01 {
+public class TC02 {
     SignUpInPage signUpInPage = new SignUpInPage();
     MyAccountPage myAccountPage = new MyAccountPage();
     CouponManagerPage couponManagerPage = new CouponManagerPage();
-
     @Test
     public void testCouponCreate() {
         Actions actions = new Actions(Driver.getDriver());
@@ -53,8 +52,22 @@ public class TC01 {
         //new coupon
         couponManagerPage.newCouponIbrahim.click();
 
-        //coupon code
-        String coupon = "dsc18904";
-        couponManagerPage.couponCodeBoxIbrahim.sendKeys(coupon);
+        //submit buton a tıklanır
+        //Submit
+        actions.sendKeys(Keys.END,Keys.PAGE_UP).perform();
+        ReusableMethods.waitForSecond(2);
+        couponManagerPage.submitButtonIbrahim.click();
+
+        //Coupon Title Error
+        ReusableMethods.waitForSecond(3);
+        String actualErrorMessage = couponManagerPage.couponTitleErrorMessage.getText();
+        String expectedErrorMessage = "Please insert atleast Coupon Title before submit.";
+
+        Assert.assertEquals(actualErrorMessage,expectedErrorMessage);
+
+
+
+
+
     }
 }

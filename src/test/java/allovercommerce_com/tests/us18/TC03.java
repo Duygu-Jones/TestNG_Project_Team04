@@ -12,11 +12,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC01 {
+public class TC03 {
     SignUpInPage signUpInPage = new SignUpInPage();
     MyAccountPage myAccountPage = new MyAccountPage();
     CouponManagerPage couponManagerPage = new CouponManagerPage();
-
     @Test
     public void testCouponCreate() {
         Actions actions = new Actions(Driver.getDriver());
@@ -56,5 +55,9 @@ public class TC01 {
         //coupon code
         String coupon = "dsc18904";
         couponManagerPage.couponCodeBoxIbrahim.sendKeys(coupon);
+
+        //description
+        couponManagerPage.descriptionBox.sendKeys("%10 discount");
+
     }
 }

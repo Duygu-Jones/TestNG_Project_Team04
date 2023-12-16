@@ -17,12 +17,12 @@ public class ComparePage {
 
 
 
-//Selma Simsek (20)
 
 
 
 
 
+//Selma Simsek (25)
 
 
 
