@@ -20,9 +20,15 @@ public class TC05 {
     OrdersPage ordersPage = new OrdersPage();
     @Test
     public void testVendorBuy() {
-            Actions actions = new Actions(Driver.getDriver());
+
+        ReusableMethods.extentReportCreate("Ibrahim",
+                "US_20 || Oluşturulan Coupon ile Vendor olarak alışveriş yapılabilmeli",
+                "TC_05 || Kullanıcı billing detailste Postcode / ZIP bilgisini yazmadan  alışveriş tamamlanmamalı");
+
+        Actions actions = new Actions(Driver.getDriver());
         //Verilen URL' ye gidilir
-            Driver.getDriver().get(ConfigReader.getProperty("URL"));
+        Driver.getDriver().get(ConfigReader.getProperty("URL"));
+        ReusableMethods.extentTestInfo("Verilen siteye gidildi.");
 
         //Sign-In butonuna tıklanır
         signUpInPage.signInIbrahim.click();
@@ -30,40 +36,51 @@ public class TC05 {
         //Kullanıcı adı girilir vendorvendoring@gmail.com
         //Şifre girilir vendor123.
         //Home page'e gidilir
-        signUpInPage.userNameTextBoxIbrahim.sendKeys("vendorvendoring@gmail.com", Keys.TAB, "vendor123.", Keys.ENTER);
+        String vendorEmail = ConfigReader.getProperty("vendorEmail");
+        String vendorPassword = ConfigReader.getProperty("vendorSifre");
+        signUpInPage.userNameTextBoxIbrahim.sendKeys(vendorEmail, Keys.TAB, vendorPassword, Keys.ENTER);
+        ReusableMethods.extentTestInfo("Vendor hesabına giris yapildi");
 
         //Home page de olunduğu doğrulanır
         String expectedTitle = "Allover Commerce";
         String actualTitle = Driver.getDriver().getTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
         ReusableMethods.waitForSecond(2);
+        ReusableMethods.extentTestPass("Anasayfada olundugu dogrulandı");
 
-        //Search kısmından ürün aratılır Chess
+        //Search kısmından ürün aratılır Vintage Toy Car
         homePage.searchBoxIbrahim.sendKeys("Vintage Toy Car", Keys.ENTER);
         ReusableMethods.waitForSecond(2);
+        ReusableMethods.extentTestInfo("Search kisminda ürün aratildi");
 
         //ADD TO CART butonuna tıklayarak ürünü sepete eklenir
-        productPage.addToCartIbrahim.click();
+        ReusableMethods.jsClick(productPage.addToCartIbrahim);
+
 
         //Cart sembolune tıklanır
-        productPage.cartSymolIbrahim.click();
+        ReusableMethods.jsClick(productPage.cartSymolIbrahim);
 
         //CHECKOUT butonuna tıklanır
-        productPage.viewCart.click();
+        ReusableMethods.jsClick(productPage.viewCart);
+
 
         //Sepete eklenen ürünün checkout sayfasındaki görünümü doğrulanır
         Assert.assertTrue(productPage.productListIbrahim.getText().contains("Vintage Toy Car"));
+        ReusableMethods.extentTestPass("Urun goruntulenme dogrulandı");
 
         //coupon girilir
-        productPage.couponBox.sendKeys("dsc18904",Keys.TAB,Keys.ENTER);
+        productPage.couponBox.sendKeys("dsc18910",Keys.TAB,Keys.ENTER);
+        ReusableMethods.extentTestInfo("Kupon eklendi.");
 
         //coupon ekleme doğrulama
         String couponMessage = productPage.couponAddMessage.getText();
-        Assert.assertTrue(couponMessage.contains("dsc18904"));
+        Assert.assertTrue(couponMessage.contains("dsc18910"));
+        ReusableMethods.extentTestPass("Kuponun eklendigi dogrulandı.");
 
         //Toplam tutar bilgisinin checkout sayfasındaki görünümü doğrulanır
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         Assert.assertTrue(productPage.totalAmountIbrahim.isDisplayed());
+        ReusableMethods.extentTestPass("Toplam tutarın goruntulendigi dogrulandi.");
 
         //müsteri bilgileri otomatik gelir
         //zipcode bos bırakılır.
@@ -73,31 +90,18 @@ public class TC05 {
         //Place order butonuna tıklanır
         ReusableMethods.waitForSecond(3);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
-        ordersPage.placeOrderIbrahim.click();
+        ReusableMethods.jsClick(ordersPage.placeOrderIbrahim);
+
 
         //"Kullanıcı  "BILLING POSTCODE / ZIP is a required field" mesajının görüldüğü onaylanır.
         ReusableMethods.waitForSecond(6);
         String actualErrorMessage = ordersPage.zipCodeMessageIbrahim.getText();
         String expectedErrorMessage = "BILLING POSTCODE / ZIP is a required field";
         Assert.assertEquals(actualErrorMessage,expectedErrorMessage);
+        ReusableMethods.extentTestPass("Siparis tamamlanamadi.");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        ReusableMethods.extentReportFlush();
+        Driver.closeDriver();
 
 
 

@@ -21,7 +21,10 @@ public class TC01 {
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
 
         // Register butonuna tiklanir
+
         HomePage homePage = new HomePage();
+
+
         homePage.registerButtonSS.click();
 
         // Username kutusuna  bir veri girilir

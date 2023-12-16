@@ -20,27 +20,40 @@ public class TC04 {
     OrdersPage ordersPage = new OrdersPage();
     @Test
     public void testVendorBuy() {
+
+        ReusableMethods.extentReportCreate("Ibrahim",
+                "US_17 || Vendor olarak alışveriş yapabilmeliyim.",
+                "TC_04 || Kullanıcı billing detailste isim bilgisini yazmadan alışveriş tamamlanmamalı");
+
             Actions actions = new Actions(Driver.getDriver());
         //Verilen URL' ye gidilir
             Driver.getDriver().get(ConfigReader.getProperty("URL"));
+        ReusableMethods.extentTestInfo("Verilen siteye gidildi.");
 
         //Sign-In butonuna tıklanır
         signUpInPage.signInIbrahim.click();
 
-        //Kullanıcı adı girilir vendorvendoring@gmail.com
-        //Şifre girilir vendor123.
+        //Kullanıcı adı girilir
+        //Şifre girilir
         //Home page'e gidilir
-        signUpInPage.userNameTextBoxIbrahim.sendKeys("vendorvendoring@gmail.com", Keys.TAB, "vendor123.", Keys.ENTER);
+
+        String vendorEmail = ConfigReader.getProperty("vendorEmail");
+        String vendorPassword = ConfigReader.getProperty("vendorSifre");
+        signUpInPage.userNameTextBoxIbrahim.sendKeys(vendorEmail, Keys.TAB, vendorPassword, Keys.ENTER);
+        ReusableMethods.extentTestInfo("Vendor hesabına giris yapildi");
+
 
         //Home page de olunduğu doğrulanır
         String expectedTitle = "Allover Commerce";
         String actualTitle = Driver.getDriver().getTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
         ReusableMethods.waitForSecond(2);
+        ReusableMethods.extentTestPass("Anasayfada olundugu dogrulandı");
 
-        //Search kısmından ürün aratılır Chess
+        //Search kısmından ürün aratılır Vintage Toy Car
         homePage.searchBoxIbrahim.sendKeys("Vintage Toy Car", Keys.ENTER);
         ReusableMethods.waitForSecond(2);
+        ReusableMethods.extentTestInfo("Search kisminda ürün aratildi");
 
         //ADD TO CART butonuna tıklayarak ürünü sepete eklenir
         productPage.addToCartIbrahim.click();
@@ -53,6 +66,7 @@ public class TC04 {
 
         //Sepete eklenen ürünün checkout sayfasındaki görünümü doğrulanır
         Assert.assertTrue(productPage.productListIbrahim.getText().contains("Vintage Toy Car"));
+        ReusableMethods.extentTestPass("Urun goruntulenme dogrulandı");
 
         //müsteri bilgileri otomatik gelir
         //firstname bos bırakılır.
@@ -71,23 +85,10 @@ public class TC04 {
         String actualErrorMessage = ordersPage.billingFirstNameMessage.getText();
         String expectedErrorMessage = "BILLING FIRST NAME is a required field.";
         Assert.assertEquals(actualErrorMessage,expectedErrorMessage);
+        ReusableMethods.extentTestPass("Siparisin tamamlanmadigi onaylandı");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        ReusableMethods.extentReportFlush();
+        Driver.closeDriver();
 
 
 

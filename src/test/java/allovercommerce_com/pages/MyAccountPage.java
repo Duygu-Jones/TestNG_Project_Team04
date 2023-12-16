@@ -80,11 +80,11 @@ public class MyAccountPage {
     @FindBy(xpath = "//li[contains(@class,'alert alert-simple alert-icon alert-close-top alert-danger')]") public WebElement verifyAddressNotChangedST;
     @FindBy(xpath = "//li[contains(@class,'alert alert-simple alert-icon alert-close-top alert-danger')]") public WebElement addressNotChangedLastNameRequiredST;
     @FindBy(xpath = "//li[contains(@class,'alert alert-simple alert-icon alert-close-top alert-danger')]") public WebElement addressNotChangedPostCodeRequiredST;
-
-
-
-
-
+    @FindBy(xpath = "//a[text()='edit your password and account details']")             public WebElement editYourPasswordAndAccountDetailsLinkST;
+    @FindBy(id = "account_first_name")                                                  public WebElement accountFirstNameBoxST;
+    @FindBy(xpath = "//div[@role='alert']")    public WebElement accountDetailsChangedSuccessfullyTextST;
+    @FindBy(id = "account_display_name")                                                  public WebElement accountDisplayNameBoxST;
+    @FindBy(xpath = "//strong[normalize-space()='First name']")     public WebElement verifyRequiredFieldTextST;
 
 
 
