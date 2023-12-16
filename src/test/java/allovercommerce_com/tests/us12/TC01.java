@@ -6,8 +6,11 @@ import allovercommerce_com.pages.SignUpInPage;
 import allovercommerce_com.utilities.ConfigReader;
 import allovercommerce_com.utilities.Driver;
 import allovercommerce_com.utilities.ReusableMethods;
+<<<<<<< HEAD
+=======
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
+>>>>>>> main
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,7 +18,7 @@ public class TC01 {
     @Test
     public void testUS12TC01() {
         ReusableMethods.extentReportCreate("Ismail","Vendor Billing Address (Fatura Adresi) ekleyebilmeli",
-                "Vendor Billing Address (Fatura Adresi) ekleyebilmeli");
+                "First name, Last name ve Email addresi olarak otomatik gelmeli");
 
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
         ReusableMethods.extentTestInfo("Verilen url'e gidildi");
@@ -53,7 +56,12 @@ public class TC01 {
         ReusableMethods.extentTestInfo("Edit Billing Address sekmesine tıklandı");
         ReusableMethods.jsScroll(addressPage.emailAdressBoxIsmail);
         Assert.assertEquals("vendorvendoring@gmail.com","vendorvendoring@gmail.com");
+        ReusableMethods.extentTestPass("First name ve Last name'in otomatik geldiği doğrulandı");
         ReusableMethods.extentTestPass("Email adresinin otomatik geldiği doğrulandı");
+
+        ReusableMethods.extentReportFlush();
+
+        Driver.closeDriver();
 
 
 

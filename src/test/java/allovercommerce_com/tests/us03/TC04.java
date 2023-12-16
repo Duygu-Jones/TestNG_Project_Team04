@@ -3,7 +3,6 @@ package allovercommerce_com.tests.us03;
 import allovercommerce_com.pages.AddressPage;
 import allovercommerce_com.pages.HomePage;
 import allovercommerce_com.pages.MyAccountPage;
-import allovercommerce_com.pages.SignUpInPage;
 import allovercommerce_com.utilities.ConfigReader;
 import allovercommerce_com.utilities.Driver;
 import allovercommerce_com.utilities.ReusableMethods;
