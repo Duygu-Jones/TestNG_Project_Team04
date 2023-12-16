@@ -69,7 +69,8 @@ public class TC01 {
         ReusableMethods.extentTestInfo("Sku sürununa veri girildiği doğrulanır");
 
         //Manage Stock kutusuna tıklanır ve Stock Qty adet girilir
-        storeManagerPage.manageStockCheckBoxFk.click();
+        ReusableMethods.jsClick(storeManagerPage.manageStockCheckBoxFk);
+        //storeManagerPage.manageStockCheckBoxFk.click();
         ReusableMethods.extentTestInfo("Manage Stock kutusuna tıklanır");
         ReusableMethods.waitForSecond(3);
         storeManagerPage.stockQtyCheckBoxFk.clear();
@@ -85,7 +86,8 @@ public class TC01 {
         //Sold Individually seçeneğine tıklanır
         if (!storeManagerPage.soldCheckboxFk.isSelected()){
 
-            storeManagerPage.soldCheckboxFk.click();
+        ReusableMethods.jsClick(storeManagerPage.soldCheckboxFk);
+
         }
         ReusableMethods.extentTestInfo("Sold Individually seçeneğine tıklanır");
 
