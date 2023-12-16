@@ -12,17 +12,17 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC01 {
+public class TC03 {
     SignUpInPage signUpInPage = new SignUpInPage();
     HomePage homePage = new HomePage();
     ProductPage productPage = new ProductPage();
+
     OrdersPage ordersPage = new OrdersPage();
     @Test
-    public void testVendorButWithCoupon() {
-
-        Actions actions = new Actions(Driver.getDriver());
+    public void testVendorBuy() {
+            Actions actions = new Actions(Driver.getDriver());
         //Verilen URL' ye gidilir
-        Driver.getDriver().get(ConfigReader.getProperty("URL"));
+            Driver.getDriver().get(ConfigReader.getProperty("URL"));
 
         //Sign-In butonuna tıklanır
         signUpInPage.signInIbrahim.click();
@@ -48,16 +48,11 @@ public class TC01 {
         //Cart sembolune tıklanır
         productPage.cartSymolIbrahim.click();
 
-        //view vart butonuna tıklanır
+        //view cart butonuna tıklanır
         productPage.viewCart.click();
 
         //Sepete eklenen ürünün checkout sayfasındaki görünümü doğrulanır
         Assert.assertTrue(productPage.productListIbrahim.getText().contains("Vintage Toy Car"));
-
-
-
-        //Toplam tutar bilgisinin checkout sayfasındaki görünümü doğrulanır
-        Assert.assertTrue(productPage.totalAmountIbrahim.isDisplayed());
 
         //coupon girilir
         productPage.couponBox.sendKeys("dsc18904",Keys.TAB,Keys.ENTER);
@@ -66,10 +61,16 @@ public class TC01 {
         String couponMessage = productPage.couponAddMessage.getText();
         Assert.assertTrue(couponMessage.contains("dsc18904"));
 
-        //proceed to checkout
-        productPage.proceedToCheckOut.click();
+        //Toplam tutar bilgisinin checkout sayfasındaki görünümü doğrulanır
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        Assert.assertTrue(productPage.totalAmountIbrahim.isDisplayed());
 
         //müsteri bilgileri otomatik gelir
+
+        //pay at the door secilir
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        ordersPage.payAtTheDoor.click();
+
 
         //Place order butonuna tıklanır
         ReusableMethods.waitForSecond(3);
@@ -93,6 +94,24 @@ public class TC01 {
 
         //Alışveriş ayrıntılarının görüntülendiği doğrulanır
         Assert.assertTrue(ordersPage.orderDetails.isDisplayed());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

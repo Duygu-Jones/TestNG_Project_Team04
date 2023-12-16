@@ -12,17 +12,17 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC01 {
+public class TC02 {
     SignUpInPage signUpInPage = new SignUpInPage();
     HomePage homePage = new HomePage();
     ProductPage productPage = new ProductPage();
+
     OrdersPage ordersPage = new OrdersPage();
     @Test
-    public void testVendorButWithCoupon() {
-
-        Actions actions = new Actions(Driver.getDriver());
+    public void testVendorBuy() {
+            Actions actions = new Actions(Driver.getDriver());
         //Verilen URL' ye gidilir
-        Driver.getDriver().get(ConfigReader.getProperty("URL"));
+            Driver.getDriver().get(ConfigReader.getProperty("URL"));
 
         //Sign-In butonuna tıklanır
         signUpInPage.signInIbrahim.click();
@@ -45,19 +45,22 @@ public class TC01 {
         //ADD TO CART butonuna tıklayarak ürünü sepete eklenir
         productPage.addToCartIbrahim.click();
 
+        //Search kısmından 2. ürün aratılır Chess
+        homePage.searchBoxIbrahim.sendKeys("Automatic Crusher", Keys.ENTER);
+        ReusableMethods.waitForSecond(2);
+
+        //ADD TO CART butonuna tıklayarak ürünü sepete eklenir
+        productPage.addToCartIbrahim.click();
+
         //Cart sembolune tıklanır
         productPage.cartSymolIbrahim.click();
 
-        //view vart butonuna tıklanır
+        //view cart butonuna tıklanır
         productPage.viewCart.click();
 
-        //Sepete eklenen ürünün checkout sayfasındaki görünümü doğrulanır
-        Assert.assertTrue(productPage.productListIbrahim.getText().contains("Vintage Toy Car"));
-
-
-
-        //Toplam tutar bilgisinin checkout sayfasındaki görünümü doğrulanır
-        Assert.assertTrue(productPage.totalAmountIbrahim.isDisplayed());
+        //Sepete eklenen ürünlerin checkout sayfasındaki görünümü doğrulanır
+        Assert.assertTrue(productPage.firstProduct.getText().contains("Vintage Toy Car"));
+        Assert.assertTrue(productPage.secondProduct.getText().contains("Automatic Crusher"));
 
         //coupon girilir
         productPage.couponBox.sendKeys("dsc18904",Keys.TAB,Keys.ENTER);
@@ -66,10 +69,16 @@ public class TC01 {
         String couponMessage = productPage.couponAddMessage.getText();
         Assert.assertTrue(couponMessage.contains("dsc18904"));
 
+        //Toplam tutar bilgisinin checkout sayfasındaki görünümü doğrulanır
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        Assert.assertTrue(productPage.totalAmountIbrahim.isDisplayed());
+
         //proceed to checkout
         productPage.proceedToCheckOut.click();
 
+
         //müsteri bilgileri otomatik gelir
+
 
         //Place order butonuna tıklanır
         ReusableMethods.waitForSecond(3);
@@ -93,6 +102,24 @@ public class TC01 {
 
         //Alışveriş ayrıntılarının görüntülendiği doğrulanır
         Assert.assertTrue(ordersPage.orderDetails.isDisplayed());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

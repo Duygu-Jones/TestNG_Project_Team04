@@ -380,6 +380,46 @@ public class OrdersPage {
 
 
 
+    @FindBy(id = "place_order")
+    public WebElement placeOrderIbrahim;
+
+    @FindBy(xpath = "(//main//div//p)[1]")
+    public WebElement orderConfirmMessage;
+
+    @FindBy(linkText = "My Orders")
+    public WebElement myOrdersButton;
+
+    @FindBy(xpath = "(//a[@class='woocommerce-button btn btn-default btn-rounded btn-outline btn-sm btn-block view'])[1]")
+    public WebElement orderView;
+
+    @FindBy(xpath = "//h2[@class='woocommerce-order-details__title']")
+    public WebElement orderDetails;
+
+    @FindBy(xpath = "(//*[@class='input-radio'])[2]")
+    public WebElement payAtTheDoor;
+
+    @FindBy(xpath = "(//*[@class='input-radio'])[1]")
+    public WebElement wireTransfer;
+
+    @FindBy(id = "billing_first_name")
+    public WebElement customerFirstNameIbrahim;
+
+    @FindBy(xpath = "//*[@class='fas fa-exclamation-triangle']")
+    public WebElement billingFirstNameMessage;
+
+    @FindBy(id = "billing_postcode")
+    public WebElement zipCodeIbrahim;
+
+    @FindBy(xpath = "//*[@class=' alert alert-simple alert-icon alert-close-top alert-danger']")
+    public WebElement zipCodeMessageIbrahim;
+
+    @FindBy(id = "billing_address_1")
+    public WebElement billingStreetAdress;
+
+    @FindBy(xpath = "(//h4)[2]")
+    public WebElement paymentMethodsText;
+
+
 
 
 
