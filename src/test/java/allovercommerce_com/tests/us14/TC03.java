@@ -88,7 +88,7 @@ public class TC03 {
         String userHome = System.getProperty("user.home");
         String allPath="\\Onedrive\\Masaüstü\\resim2.jpg";
         String path = userHome + allPath;
-       ReusableMethods.uploadFileWithRobot(path);
+        ReusableMethods.uploadFileWithRobot(path);
         ReusableMethods.waitForSecond(5);
         ReusableMethods.extentTestInfo("Fotoğraf seçildi");
 
