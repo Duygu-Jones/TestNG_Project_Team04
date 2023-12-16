@@ -26,6 +26,8 @@ public class TC01 {
     @Test
     public void test01() throws InterruptedException {
 
+        ReusableMethods.extentReportCreate("Furkan", "US15","TC01");
+
         //Verilen URL'e gidilir Sign In linkine tıklanır Username or email address kutusuna eposta adresini girilir
         // SIGN IN butonuna tıklanır
         HomePage.vendorLogginFk();
@@ -64,12 +66,12 @@ public class TC01 {
 
         //Sku alanına veri girildiği doğrulanır
         Assert.assertTrue(storeManagerPage.skuFk.isEnabled(),"SKU kutusuna veri girildi");
-        ReusableMethods.extentTestPass("Sku sürununa veri girildiği doğrulanır");
+        ReusableMethods.extentTestInfo("Sku sürununa veri girildiği doğrulanır");
 
         //Manage Stock kutusuna tıklanır ve Stock Qty adet girilir
         storeManagerPage.manageStockCheckBoxFk.click();
         ReusableMethods.extentTestInfo("Manage Stock kutusuna tıklanır");
-        Thread.sleep(3000);
+        ReusableMethods.waitForSecond(3);
         storeManagerPage.stockQtyCheckBoxFk.clear();
         storeManagerPage.stockQtyCheckBoxFk.sendKeys(faker.number().digits(5));
         ReusableMethods.extentTestInfo("Stock Qty adet girilir");
@@ -87,7 +89,7 @@ public class TC01 {
         }
         ReusableMethods.extentTestInfo("Sold Individually seçeneğine tıklanır");
 
-        Thread.sleep(3000);
+        ReusableMethods.waitForSecond(3);
 
         //Sold Individually kutusunun seçildiğini doğrulanır
         Assert.assertTrue(storeManagerPage.soldCheckboxFk.isSelected());
@@ -125,7 +127,7 @@ public class TC01 {
 
         ReusableMethods.jsScroll(storeManagerPage.scrollEnd);
 
-            Thread.sleep(3000);
+        ReusableMethods.waitForSecond(3);
 
         //Color kutusuna tıklanır
         ReusableMethods.jsClick(storeManagerPage.attributeFk);
@@ -140,7 +142,7 @@ public class TC01 {
         Assert.assertTrue(storeManagerPage.colorDdmFk.isEnabled(),"Black seçeneği görülür");
         ReusableMethods.extentTestInfo("Black seçeneği seçilir");
 
-            Thread.sleep(3000);
+        ReusableMethods.waitForSecond(3);
 
 
         //Attributes seçeneğine tıklayınız
@@ -156,6 +158,10 @@ public class TC01 {
         storeManagerPage.ddmSizeFk.sendKeys("Large",Keys.TAB,Keys.ENTER);
         Assert.assertTrue(storeManagerPage.colorDdmFk.isEnabled(),"Large seçeneği görülür");
         ReusableMethods.extentTestInfo("Large seçeneği seçilir");
+
+        ReusableMethods.extentTestPass("Vendor olarak ürün ekleme seçeneklerini görebilmeli 2 testi geçti");
+        ReusableMethods.extentReportFlush();
+        Driver.getDriver().close();
 
     }
 }
