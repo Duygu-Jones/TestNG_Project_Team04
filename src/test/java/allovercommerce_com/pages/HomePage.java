@@ -118,11 +118,10 @@ public class HomePage {
 
 
     //Duygu Jones (120)
-
-
-
-
-
+    @FindBy(xpath = "//span[text()='Sign In']")             public WebElement signInButtonDuygu;
+    @FindBy(xpath="//input[@aria-label='Search']")          public WebElement searchBoxDuygu;
+    @FindBy(xpath = "//li/a[text()='Electronics']")         public WebElement electronicsCategoryLinkDuygu;
+    @FindBy(xpath = "//li/a[text()='Home & Garden']")       public WebElement homeAndGardenCategoryLink;
 
 
 
@@ -373,6 +372,9 @@ public class HomePage {
 
 
 
+
+    @FindBy(className = "form-control")
+    public WebElement searchBoxIbrahim;
 
 
 

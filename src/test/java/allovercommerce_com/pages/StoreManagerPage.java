@@ -2,7 +2,6 @@ package allovercommerce_com.pages;
 
 
 import allovercommerce_com.utilities.Driver;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -10,13 +9,14 @@ import org.openqa.selenium.support.PageFactory;
 
 public class StoreManagerPage {
 
-
-
-
-
     public StoreManagerPage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
+
+
+
+
+
     //Selma Simsek (20)
 
 
@@ -342,9 +342,7 @@ public class StoreManagerPage {
     @FindBy (xpath = "//input[@id='stock_qty']") public WebElement stockQtyCheckBoxFk;
     @FindBy(xpath = "//*[@id='backorders']") public WebElement allowBackorders;
     @FindBy (xpath = "//img[@id='featured_img_display']") public WebElement featuredImgFk;
-    @FindBy (xpath = "//button[@id='__wp-uploader-id-19']") public WebElement selectFilesFk;
-    @FindBy (xpath = "//*[text()='Select']") public WebElement photoSelectFk;
-    @FindBy (xpath = "//button[@id='menu-item-browse']") public WebElement mediaFk;
+    @FindBy(xpath = "(//button[@class='btn btn-search'])[1]") public WebElement searchButton;
     @FindBy (xpath = "(//button[@id='menu-item-upload'])[2]") public WebElement uploadFilesFk;
     @FindBy(xpath = "//*[@id='gallery_img_gimage_0_display']")public WebElement galleryImagesFk;
     @FindBy (xpath = "//input[@id='pro_title']") public WebElement productTitleFk;
@@ -352,15 +350,17 @@ public class StoreManagerPage {
     @FindBy(xpath = "//*[@class='wcfm_product_manager_general_fields']") public WebElement necessaryScrollFK;
     @FindBy(xpath = "//*[@id='is_virtual']") public WebElement virtualBoxFk;
     @FindBy(xpath = "//*[@id='menu-item-browse']") public WebElement mediaLibraryFk;
-    @FindBy(xpath = "(//*[@src='https://allovercommerce.com/wp-content/uploads/2023/12/aaapicture-Kopya-300x300.webp'])[1]")
-    public WebElement firstImageFk;
+    @FindBy(xpath = "(//*[@src='https://allovercommerce.com/wp-content/uploads/2023/12/aaapicture-Kopya-300x300.webp'])[1]")public WebElement firstImageFk;
+    @FindBy(xpath = "(//*[@class='product-wrap'])[1]")public WebElement upploaedCar;
     @FindBy(xpath = "(//*[@class='button media-button button-primary button-large media-button-select'])") public WebElement selectFk;
     @FindBy(xpath = "(//*[@class='thumbnail'])[10]")
     public WebElement secondImageFk;
     @FindBy(xpath = "(//*[@class='button media-button button-primary button-large media-button-select'])[2]") public WebElement secondSelect;
-    @FindBy(xpath = "wcfm_products_simple_submit_button") public WebElement submitFk;
+    @FindBy(id = "wcfm_products_simple_submit_button") public WebElement submitFk;
     @FindBy(xpath = "(//*[@class='form-control'])[1]") public WebElement searchBoxFk;
-    @FindBy(xpath = "(//*[@class='button media-button button-primary button-large media-button-select'])[7]") public WebElement addToGalleryFk;
+    @FindBy(xpath = "(//*[text()='Add to Gallery'])[3]") public WebElement addToGalleryFk;
+    @FindBy(xpath = "//button[@id='__wp-uploader-id-1']") public WebElement selectFilesButtonFK;
+    @FindBy(xpath = "//button[@id='__wp-uploader-id-4']") public WebElement selectFilesButton2Fk;
 
 
 
