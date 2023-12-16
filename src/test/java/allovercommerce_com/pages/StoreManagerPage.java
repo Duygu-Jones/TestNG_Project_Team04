@@ -317,50 +317,6 @@ public class StoreManagerPage {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //Kadir Furkan Kilic (320)
     @FindBy(xpath = "(//*[@class='text'])[4]")public WebElement productFk;
     @FindBy(xpath = "(//*[text()='Add New'])[1]")public WebElement addNewFk;
