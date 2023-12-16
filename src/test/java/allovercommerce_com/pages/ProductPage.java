@@ -166,6 +166,7 @@ public class ProductPage {
 
 
 
+
     //Muammer Ucar (170)
 
 
@@ -367,11 +368,11 @@ public class ProductPage {
 
 
     //Ibrahim Akar (370)
-@FindBy(xpath = "//*[@name='add-to-cart']")
+    @FindBy(xpath = "//*[@name='add-to-cart']")
     public WebElement addToCartIbrahim;
-@FindBy(xpath = "//i[@class='w-icon-cart']")
+    @FindBy(xpath = "//i[@class='w-icon-cart']")
     public WebElement cartSymolIbrahim;
-@FindBy(xpath = "//a[@class ='button checkout wc-forward']")
+    @FindBy(xpath = "//a[@class ='button checkout wc-forward']")
     public WebElement checkOutButtonIbrahim;
     @FindBy(xpath = "//tr//td[@class='product-name']")
     public WebElement productListIbrahim;

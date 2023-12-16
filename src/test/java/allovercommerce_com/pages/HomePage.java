@@ -118,7 +118,6 @@ public class HomePage {
 
 
     //Duygu Jones (120)
-
     @FindBy(xpath = "//span[text()='Sign In']")             public WebElement signInButtonDuygu;
     @FindBy(xpath="//input[@aria-label='Search']")          public WebElement searchBoxDuygu;
     @FindBy(xpath = "//li/a[text()='Electronics']")         public WebElement electronicsCategoryLinkDuygu;

@@ -2,7 +2,6 @@ package allovercommerce_com.pages;
 
 
 import allovercommerce_com.utilities.Driver;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -10,14 +9,15 @@ import org.openqa.selenium.support.PageFactory;
 
 public class StoreManagerPage {
 
-
-
-
-
     public StoreManagerPage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
-//Selma Simsek (20)
+
+
+
+
+
+    //Selma Simsek (20)
 
 
 

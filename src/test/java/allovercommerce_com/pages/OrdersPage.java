@@ -368,18 +368,6 @@ public class OrdersPage {
 
 
     //Ibrahim Akar (370)
-
-
-
-
-
-
-
-
-
-
-
-
     @FindBy(id = "place_order")
     public WebElement placeOrderIbrahim;
 
