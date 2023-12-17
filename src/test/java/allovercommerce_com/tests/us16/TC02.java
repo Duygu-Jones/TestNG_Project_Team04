@@ -27,14 +27,10 @@ public class TC02 {
 
         Driver.getDriver().switchTo().newWindow(WindowType.TAB);
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
-        //Driver.getDriver().;
-       // SignUpInPage.SignInFk.click();
-       // SignUpInPage.emailFk.sendKeys(ConfigReader.getProperty("emailFk"));
-       // SignUpInPage.passwordFk.sendKeys(ConfigReader.getProperty("allowerPassFk"));
-       // SignUpInPage.submitFk.click();
+
 
         //HomePage.vendorLogginFk();
-        ReusableMethods.extentTestInfo("Web Sitesine Gidildilir");
+        //ReusableMethods.extentTestInfo("Web Sitesine Gidildilir");
 
         //My Account butonuna tıklanır
         ReusableMethods.waitForSecond(3);
