@@ -16,7 +16,7 @@ public class TC02 {
         HomePage homePage=new HomePage();
         MyAccountPage myAccountPage=new MyAccountPage();
         Faker faker=new Faker();
-        ReusableMethods.extentReportCreate("Salih","US04- Kullanıcı Shipping Adress ekleyebilmeli","TC03 Kullanıcı Shipping Address kısmındaki Firstname alanını doldurmazsa shipping adress ekleyememeli");
+        ReusableMethods.extentReportCreate("Salih","US04- Kullanıcı Shipping Adress ekleyebilmeli","TC02 Kullanıcı Shipping Address kısmındaki Firstname alanını doldurmazsa shipping adress ekleyememeli");
 
 
         //1	https://allovercommerce.com Sitesine Git ve Login Ol
