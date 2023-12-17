@@ -368,10 +368,15 @@ public class SignUpInPage {
 
 
     //Ibrahim Akar (370)
-@FindBy(xpath = "//span[.='Sign In']")
+@FindBy(xpath = "//*[@class='login inline-type']")
     public WebElement signInIbrahim;
 @FindBy(id = "username")
 public WebElement userNameTextBoxIbrahim;
+@FindBy(xpath = "//*[@class='login logout inline-type']")
+    public WebElement signOutIbrahim;
+@FindBy(linkText = "Log out")
+    public WebElement signOutConfirm;
+
 
 
 

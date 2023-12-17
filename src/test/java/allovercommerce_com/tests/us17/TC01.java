@@ -31,7 +31,8 @@ public class TC01 {
         ReusableMethods.extentTestInfo("Verilen siteye gidildi.");
 
         //Sign-In butonuna tıklanır
-        signUpInPage.signInIbrahim.click();
+        ReusableMethods.jsClick(signUpInPage.signInIbrahim);
+
 
         //Kullanıcı adı girilir vendorvendoring@gmail.com
         //Şifre girilir vendor123.
@@ -97,7 +98,12 @@ public class TC01 {
         ReusableMethods.extentTestPass("Alisveris ayrintileri goruntulendi");
 
         ReusableMethods.extentReportFlush();
-        Driver.closeDriver();
+        ReusableMethods.waitForSecond(5);
+        ReusableMethods.jsClick(signUpInPage.signOutIbrahim);
+        ReusableMethods.jsClick(signUpInPage.signOutConfirm);
+        ReusableMethods.waitForSecond(5);
+
+      //  Driver.closeDriver();
 
 
     }

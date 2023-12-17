@@ -72,7 +72,10 @@ public class TC03 {
         ReusableMethods.extentTestInfo("Ürünün cart display de görüntülendigi dogrulandi.");
 
         ReusableMethods.extentReportFlush();
-        Driver.closeDriver();
+        ReusableMethods.waitForSecond(5);
+        ReusableMethods.jsClick(signUpInPage.signOutIbrahim);
+        ReusableMethods.jsClick(signUpInPage.signOutConfirm);
+        ReusableMethods.waitForSecond(5);
 
     }
 }

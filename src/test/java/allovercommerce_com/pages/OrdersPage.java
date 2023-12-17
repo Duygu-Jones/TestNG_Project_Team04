@@ -389,7 +389,7 @@ public class OrdersPage {
     @FindBy(xpath = "(//*[@class='input-radio'])[1]")
     public WebElement wireTransfer;
 
-    @FindBy(id = "billing_first_name")
+    @FindBy(xpath = "//*[@id='billing_first_name']")
     public WebElement customerFirstNameIbrahim;
 
     @FindBy(xpath = "//*[@class='fas fa-exclamation-triangle']")
