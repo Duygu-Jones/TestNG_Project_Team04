@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="us01 Test Suite" verbose="1">
-    <test name= "Allovercommerce || us01 || Siteye kullanıcı (Müşteri) olarak kayıt yapılabilmeli.(Register)">
-        <packages>
-            <package name="allovercommerce_com.tests.us01"></package>
-        </packages>
-    </test>
-</suite>
