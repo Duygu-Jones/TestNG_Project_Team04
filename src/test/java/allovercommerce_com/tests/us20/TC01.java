@@ -73,7 +73,7 @@ public class TC01 {
         ReusableMethods.extentTestPass("Toplam tutarın goruntulendigi dogrulandi.");
 
         //coupon girilir
-        productPage.couponBox.sendKeys("dsc18910",Keys.TAB,Keys.ENTER);
+        productPage.couponBox.sendKeys("dsc18904",Keys.TAB,Keys.ENTER);
         ReusableMethods.extentTestInfo("Kupon eklendi.");
 
         //coupon ekleme doğrulama
@@ -114,7 +114,10 @@ public class TC01 {
         ReusableMethods.extentTestPass("Alisveris ayrintilarinin görüntülendigi dogrulandi.");
 
         ReusableMethods.extentReportFlush();
-        Driver.closeDriver();
+        ReusableMethods.waitForSecond(5);
+        ReusableMethods.jsClick(signUpInPage.signOutIbrahim);
+        ReusableMethods.jsClick(signUpInPage.signOutConfirm);
+        ReusableMethods.waitForSecond(5);
 
 
 

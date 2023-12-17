@@ -100,7 +100,10 @@ public class TC09 {
 
 
         ReusableMethods.extentReportFlush();
-        Driver.closeDriver();
+        ReusableMethods.waitForSecond(5);
+        ReusableMethods.jsClick(signUpInPage.signOutIbrahim);
+        ReusableMethods.jsClick(signUpInPage.signOutConfirm);
+        ReusableMethods.waitForSecond(5);
 
     }
 }

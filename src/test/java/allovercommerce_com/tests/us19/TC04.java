@@ -79,7 +79,7 @@ public class TC04 {
         ReusableMethods.extentTestInfo("Ürün miktari artirildi.");
 
         //update cart
-        productPage.updateCart.click();
+        ReusableMethods.jsClick( productPage.updateCart);
         ReusableMethods.waitForSecond(5);
         ReusableMethods.extentTestInfo("Sepet miktari güncellendi.");
 
@@ -89,7 +89,10 @@ public class TC04 {
         ReusableMethods.extentTestPass("Güncellenen ürün miktari dogrulandi.");
 
         ReusableMethods.extentReportFlush();
-        Driver.closeDriver();
+        ReusableMethods.waitForSecond(5);
+        ReusableMethods.jsClick(signUpInPage.signOutIbrahim);
+        ReusableMethods.jsClick(signUpInPage.signOutConfirm);
+        ReusableMethods.waitForSecond(5);
 
     }
 }

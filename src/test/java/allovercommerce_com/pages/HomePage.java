@@ -374,7 +374,7 @@ public class HomePage {
 
 
 
-    @FindBy(className = "form-control")
+    @FindBy(xpath = "(//*[@class='form-control'])[1]")
     public WebElement searchBoxIbrahim;
 
 

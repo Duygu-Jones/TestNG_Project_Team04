@@ -376,7 +376,7 @@ public class ProductPage {
     public WebElement checkOutButtonIbrahim;
     @FindBy(xpath = "//tr//td[@class='product-name']")
     public WebElement productListIbrahim;
-    @FindBy(xpath = "(//bdi)[6]")
+    @FindBy(xpath = "//*[@class='order-total']")
     public WebElement totalAmountIbrahim;
     @FindBy(xpath = "(//tr//td[@class='product-name'])[1]")
     public WebElement firstProduct;

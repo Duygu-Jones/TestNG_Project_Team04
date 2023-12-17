@@ -7,6 +7,7 @@ import allovercommerce_com.pages.SignUpInPage;
 import allovercommerce_com.utilities.ConfigReader;
 import allovercommerce_com.utilities.Driver;
 import allovercommerce_com.utilities.ReusableMethods;
+import org.asynchttpclient.request.body.generator.ReactiveStreamsBodyGenerator;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -31,7 +32,7 @@ public class TC03 {
         ReusableMethods.extentTestInfo("Verilen siteye gidildi.");
 
         //Sign-In butonuna tıklanır
-        signUpInPage.signInIbrahim.click();
+        ReusableMethods.jsClick(signUpInPage.signInIbrahim);
 
         //Kullanıcı adı girilir vendorvendoring@gmail.com
         //Şifre girilir vendor123.
@@ -69,12 +70,12 @@ public class TC03 {
         ReusableMethods.extentTestPass("Urun goruntulenme dogrulandı");
 
         //coupon girilir
-        productPage.couponBox.sendKeys("dsc18910",Keys.TAB,Keys.ENTER);
+        productPage.couponBox.sendKeys("dsc18904",Keys.TAB,Keys.ENTER);
         ReusableMethods.extentTestInfo("Kupon eklendi.");
 
         //coupon ekleme doğrulama
         String couponMessage = productPage.couponAddMessage.getText();
-        Assert.assertTrue(couponMessage.contains("dsc18910"));
+        Assert.assertTrue(couponMessage.contains("dsc18904"));
         ReusableMethods.extentTestPass("Kuponun eklendigi dogrulandı.");
 
         //Toplam tutar bilgisinin checkout sayfasındaki görünümü doğrulanır
@@ -83,6 +84,8 @@ public class TC03 {
         ReusableMethods.extentTestPass("Toplam tutarın goruntulendigi dogrulandi.");
 
         //müsteri bilgileri otomatik gelir
+
+        ReusableMethods.jsClick(productPage.proceedToCheckOut);
 
         //pay at the door secilir
         actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -118,7 +121,10 @@ public class TC03 {
         ReusableMethods.extentTestInfo("Alisveris ayrintilari görüntülenir.");
 
         ReusableMethods.extentReportFlush();
-        Driver.closeDriver();
+        ReusableMethods.waitForSecond(5);
+        ReusableMethods.jsClick(signUpInPage.signOutIbrahim);
+        ReusableMethods.jsClick(signUpInPage.signOutConfirm);
+        ReusableMethods.waitForSecond(5);
 
 
 
