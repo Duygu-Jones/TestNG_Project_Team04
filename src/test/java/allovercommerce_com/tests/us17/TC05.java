@@ -27,11 +27,13 @@ public class TC05 {
 
             Actions actions = new Actions(Driver.getDriver());
         //Verilen URL' ye gidilir
+        ReusableMethods.waitForSecond(3);
             Driver.getDriver().get(ConfigReader.getProperty("URL"));
         ReusableMethods.extentTestInfo("Verilen siteye gidildi.");
 
         //Sign-In butonuna tıklanır
-        signUpInPage.signInIbrahim.click();
+        ReusableMethods.jsClick(signUpInPage.signInIbrahim);
+
 
         //Kullanıcı adı girilir
         //Şifre girilir
@@ -86,7 +88,12 @@ public class TC05 {
         ReusableMethods.extentTestPass("Siparisin tamamlanmadigi onaylandı");
 
         ReusableMethods.extentReportFlush();
-        Driver.closeDriver();
+        ReusableMethods.waitForSecond(5);
+        ReusableMethods.jsClick(signUpInPage.signOutIbrahim);
+        ReusableMethods.jsClick(signUpInPage.signOutConfirm);
+        ReusableMethods.waitForSecond(5);
+      //  Driver.closeDriver();
+
 
 
     }

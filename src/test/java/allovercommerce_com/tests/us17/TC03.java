@@ -30,7 +30,7 @@ public class TC03 {
         ReusableMethods.extentTestInfo("Verilen siteye gidildi.");
 
         //Sign-In butonuna tıklanır
-        signUpInPage.signInIbrahim.click();
+        ReusableMethods.jsClick(signUpInPage.signInIbrahim);
 
         //Kullanıcı adı girilir
         //Şifre girilir
@@ -73,6 +73,7 @@ public class TC03 {
 
 
         //Toplam tutar bilgisinin checkout sayfasındaki görünümü doğrulanır
+        ReusableMethods.waitForSecond(5);
         Assert.assertTrue(productPage.totalAmountIbrahim.isDisplayed());
 
         //Place order butonuna tıklanır
@@ -101,7 +102,11 @@ public class TC03 {
         ReusableMethods.extentTestPass("Alisveris ayrintileri goruntulendi");
 
         ReusableMethods.extentReportFlush();
-        Driver.closeDriver();
+        ReusableMethods.waitForSecond(5);
+        ReusableMethods.jsClick(signUpInPage.signOutIbrahim);
+        ReusableMethods.jsClick(signUpInPage.signOutConfirm);
+        ReusableMethods.waitForSecond(5);
+      //  Driver.closeDriver();
 
 
 

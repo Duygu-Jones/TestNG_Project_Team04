@@ -31,7 +31,8 @@ public class TC02 {
         ReusableMethods.extentTestInfo("Verilen siteye gidildi.");
 
         //Sign-In butonuna tıklanır
-        signUpInPage.signInIbrahim.click();
+        ReusableMethods.jsClick(signUpInPage.signInIbrahim);
+
 
         //Kullanıcı adı girilir vendorvendoring@gmail.com
         //Şifre girilir vendor123.
@@ -80,7 +81,7 @@ public class TC02 {
 
         //coupon ekleme doğrulama
         String couponMessage = productPage.couponAddMessage.getText();
-        Assert.assertTrue(couponMessage.contains("dsc18910"));
+        Assert.assertTrue(couponMessage.contains("dsc18904"));
         ReusableMethods.extentTestPass("Kuponun eklendigi dogrulandı.");
 
         //Toplam tutar bilgisinin checkout sayfasındaki görünümü doğrulanır
@@ -124,7 +125,10 @@ public class TC02 {
         ReusableMethods.extentTestPass("Alisveris ayrintilarinin görüntülendigi dogrulandi.");
 
         ReusableMethods.extentReportFlush();
-        Driver.closeDriver();
+        ReusableMethods.waitForSecond(5);
+        ReusableMethods.jsClick(signUpInPage.signOutIbrahim);
+        ReusableMethods.jsClick(signUpInPage.signOutConfirm);
+        ReusableMethods.waitForSecond(5);
 
 
 
