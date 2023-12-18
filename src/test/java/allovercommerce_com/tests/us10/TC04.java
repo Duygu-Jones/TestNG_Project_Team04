@@ -22,7 +22,7 @@ public class TC04 {
         ReusableMethods.extentTestInfo("Verilen URL'e gidildi");
 
 //    Register linkine tıklanır
-        signUpInPage.registerMU.click();
+        ReusableMethods.jsClick(signUpInPage.registerMU);
         ReusableMethods.extentTestInfo("Register linkine tıklandı");
 
 //    Sign up as a vendor? linkine tıklanır
@@ -41,6 +41,7 @@ public class TC04 {
 
 //    Sayfayı kapatılır
         ReusableMethods.extentReportFlush();
+        ReusableMethods.waitForSecond(4);
         Driver.closeDriver();
     }
 }

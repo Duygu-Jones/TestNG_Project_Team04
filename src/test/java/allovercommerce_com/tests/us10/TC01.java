@@ -41,8 +41,7 @@ public class TC01 {
 
 //    Sayfayı kapatılır
         ReusableMethods.extentReportFlush();
-        Driver.closeDriver();
-
+//    Driver.closeDriver();
     }
 
 

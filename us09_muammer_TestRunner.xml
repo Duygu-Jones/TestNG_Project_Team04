@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Allovercommerce Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="Allovercommerce test Automation">
+        <classes>
+            <class name="allovercommerce_com.tests.us09.TC01">
+                <methods>
+                    <include name="TC01"/>
+                </methods>
+            </class>
+            <class name="allovercommerce_com.tests.us09.TC02">
+                <methods>
+                    <include name="TC01"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
