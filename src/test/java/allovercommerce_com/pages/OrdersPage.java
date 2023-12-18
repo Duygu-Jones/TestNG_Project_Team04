@@ -371,7 +371,7 @@ public class OrdersPage {
     @FindBy(id = "place_order")
     public WebElement placeOrderIbrahim;
 
-    @FindBy(xpath = "(//main//div//p)[1]")
+    @FindBy(xpath = "//*[@class='woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received order-success']")
     public WebElement orderConfirmMessage;
 
     @FindBy(linkText = "My Orders")
@@ -389,7 +389,7 @@ public class OrdersPage {
     @FindBy(xpath = "(//*[@class='input-radio'])[1]")
     public WebElement wireTransfer;
 
-    @FindBy(id = "billing_first_name")
+    @FindBy(xpath = "//*[@id='billing_first_name']")
     public WebElement customerFirstNameIbrahim;
 
     @FindBy(xpath = "//*[@class='fas fa-exclamation-triangle']")

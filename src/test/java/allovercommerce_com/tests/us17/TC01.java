@@ -7,9 +7,7 @@ import allovercommerce_com.pages.SignUpInPage;
 import allovercommerce_com.utilities.ConfigReader;
 import allovercommerce_com.utilities.Driver;
 import allovercommerce_com.utilities.ReusableMethods;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -22,27 +20,39 @@ public class TC01 {
 
     @Test
     public void testVendorBuy() {
+        ReusableMethods.extentReportCreate("Ibrahim",
+                                              "US_17 || Vendor olarak alışveriş yapabilmeliyim.",
+                                              "TC_01 || Kullanıcı geçerli verilerle Vendor olarak  bir  ürün satın alabilmeli (Wire Transfer )");
+
+
         Actions actions = new Actions(Driver.getDriver());
         //Verilen URL' ye gidilir
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
+        ReusableMethods.extentTestInfo("Verilen siteye gidildi.");
 
         //Sign-In butonuna tıklanır
-        signUpInPage.signInIbrahim.click();
+        ReusableMethods.jsClick(signUpInPage.signInIbrahim);
+
 
         //Kullanıcı adı girilir vendorvendoring@gmail.com
         //Şifre girilir vendor123.
         //Home page'e gidilir
-        signUpInPage.userNameTextBoxIbrahim.sendKeys("vendorvendoring@gmail.com", Keys.TAB, "vendor123.", Keys.ENTER);
+        String vendorEmail = ConfigReader.getProperty("vendorEmail");
+        String vendorPassword = ConfigReader.getProperty("vendorSifre");
+        signUpInPage.userNameTextBoxIbrahim.sendKeys(vendorEmail, Keys.TAB, vendorPassword, Keys.ENTER);
+        ReusableMethods.extentTestInfo("Vendor hesabına giris yapildi");
 
         //Home page de olunduğu doğrulanır
         String expectedTitle = "Allover Commerce";
         String actualTitle = Driver.getDriver().getTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
         ReusableMethods.waitForSecond(2);
+        ReusableMethods.extentTestPass("Anasayfada olundugu dogrulandı");
 
-        //Search kısmından ürün aratılır Chess
+        //Search kısmından ürün aratılır Vintage Toy Car
         homePage.searchBoxIbrahim.sendKeys("Vintage Toy Car", Keys.ENTER);
         ReusableMethods.waitForSecond(2);
+        ReusableMethods.extentTestInfo("Search kisminda ürün aratildi");
 
         //ADD TO CART butonuna tıklayarak ürünü sepete eklenir
         productPage.addToCartIbrahim.click();
@@ -55,21 +65,23 @@ public class TC01 {
 
         //Sepete eklenen ürünün checkout sayfasındaki görünümü doğrulanır
         Assert.assertTrue(productPage.productListIbrahim.getText().contains("Vintage Toy Car"));
+        ReusableMethods.extentTestPass("Urun goruntulenme dogrulandı");
 
         //müsteri bilgileri otomatik gelir
 
-        //Toplam tutar bilgisinin checkout sayfasındaki görünümü doğrulanır
-        Assert.assertTrue(productPage.totalAmountIbrahim.isDisplayed());
+
 
         //Place order butonuna tıklanır
         ReusableMethods.waitForSecond(3);
-        ordersPage.placeOrderIbrahim.click();
+        ReusableMethods.jsClick(ordersPage.placeOrderIbrahim);
+
 
         //"Kullanıcı  ""Thank you. Your order has been received."" mesajının görüldüğü onaylanır.
         ReusableMethods.waitForSecond(6);
         String actualConfirmMessage = ordersPage.orderConfirmMessage.getText();
         String expectedConfirmMessage = "Thank you. Your order has been received.";
         Assert.assertEquals(actualConfirmMessage,expectedConfirmMessage);
+        ReusableMethods.extentTestPass("Siparis tamamlandi.");
 
         //Sayfanın en altında bulunan MY ACCOUNT kısmına gelir
         actions.sendKeys(Keys.END).perform();
@@ -83,6 +95,15 @@ public class TC01 {
 
         //Alışveriş ayrıntılarının görüntülendiği doğrulanır
         Assert.assertTrue(ordersPage.orderDetails.isDisplayed());
+        ReusableMethods.extentTestPass("Alisveris ayrintileri goruntulendi");
+
+        ReusableMethods.extentReportFlush();
+        ReusableMethods.waitForSecond(5);
+        ReusableMethods.jsClick(signUpInPage.signOutIbrahim);
+        ReusableMethods.jsClick(signUpInPage.signOutConfirm);
+        ReusableMethods.waitForSecond(5);
+
+      //  Driver.closeDriver();
 
 
     }

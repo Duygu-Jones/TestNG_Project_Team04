@@ -16,27 +16,43 @@ public class TC01 {
     HomePage homePage = new HomePage();
     @Test
     public void testCustomerButWithCoupon() {
+
+        ReusableMethods.extentReportCreate("Ibrahim",
+                "US_19 || Oluşturulan Coupon ile müşteri olarak alışveriş yapılabilmeli",
+                "TC_01 || Kullanıcı search box tan istediği bir ürünü arayabilmeli");
+
         Actions actions = new Actions(Driver.getDriver());
         //Verilen URL' ye gidilir
         Driver.getDriver().get(ConfigReader.getProperty("URL"));
+        ReusableMethods.extentTestInfo("Verilen siteye gidildi.");
 
         //Sign-In butonuna tıklanır
         signUpInPage.signInIbrahim.click();
 
-        //Kullanıcı adı girilir vendorvendoring@gmail.com
-        //Şifre girilir vendor123.
+        //Kullanıcı adı girilir
+        //Şifre girilir
         //Home page'e gidilir
-        signUpInPage.userNameTextBoxIbrahim.sendKeys("vendorvendoring@gmail.com", Keys.TAB, "vendor123.", Keys.ENTER);
+        String customerEmail = ConfigReader.getProperty("musteriEmail");
+        String customerPassword = ConfigReader.getProperty("musteriPassword");
+        signUpInPage.userNameTextBoxIbrahim.sendKeys(customerEmail, Keys.TAB, customerPassword, Keys.ENTER);
+        ReusableMethods.extentTestInfo("Müsteri hesabına giris yapildi");
 
-
-        //Search kısmından ürün aratılır Chess
+        //Search kısmından ürün aratılır
         ReusableMethods.waitForSecond(3);
         String searchProduct = "Vintage Toy Car";
         homePage.searchBoxIbrahim.sendKeys(searchProduct, Keys.ENTER);
         ReusableMethods.waitForSecond(2);
+        ReusableMethods.extentTestInfo("Ürün aratildi");
 
         //doğrulama
         Assert.assertTrue(Driver.getDriver().getTitle().contains(searchProduct));
+        ReusableMethods.extentTestPass("Sonuc sayfasinin ürünü icerdigi dogrulandi.");
+
+        ReusableMethods.extentReportFlush();
+        ReusableMethods.waitForSecond(5);
+        ReusableMethods.jsClick(signUpInPage.signOutIbrahim);
+        ReusableMethods.jsClick(signUpInPage.signOutConfirm);
+        ReusableMethods.waitForSecond(5);
 
     }
 }

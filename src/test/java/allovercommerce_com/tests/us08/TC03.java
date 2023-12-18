@@ -126,6 +126,9 @@ public class TC03 {
         Assert.assertTrue(wishlistPage.fieldIsRequiredMessageDuygu.getText().contains(" is a required field."));
         ReusableMethods.extentTestPass("Satin alma isleminin gerceklestirilemedigi dogrulandi");
 
+        ReusableMethods.extentReportFlush();
+        Driver.closeDriver();
+
     }
 
 }

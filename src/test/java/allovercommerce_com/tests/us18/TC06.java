@@ -3,6 +3,7 @@ package allovercommerce_com.tests.us18;
 import allovercommerce_com.pages.CouponManagerPage;
 import allovercommerce_com.pages.MyAccountPage;
 import allovercommerce_com.pages.SignUpInPage;
+import allovercommerce_com.utilities.ConfigReader;
 import allovercommerce_com.utilities.Driver;
 import allovercommerce_com.utilities.ReusableMethods;
 import org.openqa.selenium.By;
@@ -19,28 +20,40 @@ public class TC06 {
     CouponManagerPage couponManagerPage = new CouponManagerPage();
     @Test
     public void testCouponCreate() {
+
+        ReusableMethods.extentReportCreate("Ibrahim",
+                "US_18 || Vendor olarak Coupons oluşturabilmeliyim",
+                "TC_06 || Coupon Amount yazılabilmeli");
+
         Actions actions = new Actions(Driver.getDriver());
         //Verilen URL' ye gidilir  https://allovercommerce.com/
-        Driver.getDriver().get(" https://allovercommerce.com/");
+        Driver.getDriver().get(ConfigReader.getProperty("URL"));
+        ReusableMethods.extentTestInfo("Verilen siteye gidildi.");
 
         //Sign-In butonuna tıklanır
         signUpInPage.signInIbrahim.click();
 
-        //Kullanıcı adı girilir vendorvendoring@gmail.com
-        //Şifre girilir vendor123.
+        //Kullanıcı adı girilir
+        //Şifre girilir
         //Home page'e gidilir
-        signUpInPage.userNameTextBoxIbrahim.sendKeys("vendorvendoring@gmail.com", Keys.TAB, "vendor123.", Keys.ENTER);
+        String vendorEmail = ConfigReader.getProperty("vendorEmail");
+        String vendorPassword = ConfigReader.getProperty("vendorSifre");
+        signUpInPage.userNameTextBoxIbrahim.sendKeys(vendorEmail, Keys.TAB, vendorPassword, Keys.ENTER);
+        ReusableMethods.extentTestInfo("Vendor hesabına giris yapildi");
+
 
         //Home page de olunduğu doğrulanır
         String expectedTitle = "Allover Commerce";
         String actualTitle = Driver.getDriver().getTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
         ReusableMethods.waitForSecond(2);
+        ReusableMethods.extentTestPass("Anasayfada olundugu dogrulandı");
 
         //myaccount
         actions.sendKeys(Keys.END).perform();
         WebElement myAccount = Driver.getDriver().findElement(By.linkText("My Account"));
         myAccountPage.myAccountButtonIsmail.click();
+        ReusableMethods.extentTestInfo("MyAccount kısmında gidildi.");
 
         //store manager
         myAccountPage.storeManagerIsmail.click();
@@ -54,19 +67,30 @@ public class TC06 {
         couponManagerPage.newCouponIbrahim.click();
 
         //coupon code
-        String coupon = "dsc18904";
+        String coupon = "dsc18910";
         couponManagerPage.couponCodeBoxIbrahim.sendKeys(coupon);
+        ReusableMethods.extentTestInfo("Kupon kodu yazildi");
 
         //description
         couponManagerPage.descriptionBox.sendKeys("%10 discount");
+        ReusableMethods.extentTestInfo("Kupon description yazildi");
 
         //Percentage
         Select select = new Select(couponManagerPage.discountType);
         select.getFirstSelectedOption();
+        ReusableMethods.extentTestInfo("Indirim turu secildi");
 
         //coupon amount
         ReusableMethods.deleteAll(couponManagerPage.couponAmount);
         couponManagerPage.couponAmount.sendKeys("10");
+        ReusableMethods.extentTestInfo("Kupon miktari girildi.");
+
+
+        ReusableMethods.extentReportFlush();
+        ReusableMethods.waitForSecond(5);
+        ReusableMethods.jsClick(signUpInPage.signOutIbrahim);
+        ReusableMethods.jsClick(signUpInPage.signOutConfirm);
+        ReusableMethods.waitForSecond(5);
 
 
 

@@ -96,10 +96,6 @@ public class TC02 {
         //Ürünün eklendiği doğrula.
        softAssert.assertTrue(storeManagerPage.filterMedia.isDisplayed());
         ReusableMethods.extentTestInfo("Fotoğrafın eklendiği doğrulanır");
-
-
-
-
         ReusableMethods.extentReportFlush();
         Driver.closeDriver();
 
